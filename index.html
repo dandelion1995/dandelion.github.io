@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
@@ -7,26 +7,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>Home | Zhang Li Min Blog</title>
+<title>主页 | Dandelion Blog</title>
 <meta name="generator" content="Jekyll v4.2.0">
-<meta property="og:title" content="Home">
+<meta property="og:title" content="主页">
 <meta name="author" content="dandelion9508">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="zh_CN">
 <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.">
 <meta property="og:description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.">
 <link rel="canonical" href="/">
 <meta property="og:url" content="/">
-<meta property="og:site_name" content="Zhang Li Min Blog">
+<meta property="og:site_name" content="Dandelion Blog">
 <meta name="twitter:card" content="summary">
-<meta property="twitter:title" content="Home">
+<meta property="twitter:title" content="主页">
 <script type="application/ld+json">
-{"description":"Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.","url":"/","author":{"@type":"Person","name":"dandelion9508"},"@type":"WebSite","headline":"Home","name":"Zhang Li Min Blog","@context":"https://schema.org"}</script>
+{"url":"/","description":"Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.","author":{"@type":"Person","name":"dandelion9508"},"@type":"WebSite","headline":"主页","name":"Dandelion Blog","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="shortcut icon" href="">
+<link rel="shortcut icon" href="/assets/images/girl.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
   <link rel="stylesheet" href="/assets/css/main.css">
-  <script src="/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Zhang Li Min Blog">
+  <script src="/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Dandelion Blog">
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
 <!-- and it's easy to individually load additional languages -->
@@ -249,8 +249,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
   <div class="wrapper">
     <div class="site-header-inner">
 <span class="site-brand"><a class="site-brand-inner" rel="author" href="/">
-  <img class="site-favicon" title="Zhang Li Min Blog" src="" onerror="this.style.display='none'">
-  Zhang Li Min Blog
+  <img class="site-favicon" title="Dandelion Blog" src="/assets/images/girl.png" onerror="this.style.display='none'">
+  Dandelion Blog
 </a>
 </span><nav class="site-nav">
           <input type="checkbox" id="nav-trigger" class="nav-trigger">
@@ -263,7 +263,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
           </label>
 
           <div class="trigger">
-<a class="page-link" href="/about.html">ABOUT</a><a class="page-link" href="/archives.html">ARCHIVES</a><a class="page-link" href="/categories.html">CATEGORIES</a><a class="page-link" href="/">HOME</a><a class="page-link" href="/tags.html">TAGS</a>
+<a class="page-link" href="/">主页</a><!--
 
 
 
@@ -402,8 +402,116 @@ function googleTranslateElementInit() {
 </script>
 
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-</span>
+</span>--><div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
 </div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+</div> 
+
+
         </nav>
 </div>
   </div>
@@ -640,7 +748,7 @@ function googleTranslateElementInit() {
     }
   });
 </script>
-<div class="theme-toggle">
+<!--<div class="theme-toggle">
   <input type="checkbox" id="theme-switch">
   <label for="theme-switch">
     <div class="toggle"></div>
@@ -747,7 +855,9 @@ function googleTranslateElementInit() {
     }
   })();
 </script>
-<main class="page-content" aria-label="Content">
+-->
+
+    <main class="page-content" aria-label="Content">
       <div class="wrapper">
         <div class="framework">
   <section class="main">
@@ -825,23 +935,196 @@ function googleTranslateElementInit() {
 
 
 <h2 class="post-title">
-        <a class="post-link" href="/jekyll/2018/12/07/welcome-to-jekyll.html">
-          Welcome to Jekyll!
+        <a class="post-link" href="/%E9%97%AE%E9%A2%98/2020/12/29/problem-table-add-slash.html">
+          table表头添加斜线
         </a>
       </h2>
       <div class="post-meta">
-        <span class="post-date"><i class="fa fa-calendar"></i> Dec 07, 2018</span>
+        <span class="post-date"><i class="fa fa-calendar"></i> Dec 29, 2020</span>
         <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
       </div>
-      <a class="post-excerpt" href="/jekyll/2018/12/07/welcome-to-jekyll.html">
+      <a class="post-excerpt" href="/%E9%97%AE%E9%A2%98/2020/12/29/problem-table-add-slash.html">
         <p>
-        You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.
+        直接上代码
 
-To add new posts, simply add a file in the _posts dire... <span class="read_more">Read More</span>
+CSS
+    &lt;style&gt;
+    #lineTd {
+        background: #fff     url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoP... <span class="read_more">Read More</span>
+        </p>
+      </a>
+      <div class="post-tags"><a class="post-tag" href="/tags.html#css">#css</a></div>
+    </li>
+<li>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/%E9%97%AE%E9%A2%98/2020/12/29/problem-export-word-blog.html">
+          JS导出Word默认导出word页面布局-页面纸张为横向
+        </a>
+      </h2>
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Dec 29, 2020</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 3 mins</span>
+      </div>
+      <a class="post-excerpt" href="/%E9%97%AE%E9%A2%98/2020/12/29/problem-export-word-blog.html">
+        <p>
+        导出word横向和纵向为不同的html文件，对比（在线文本差异对比：https://www.jq22.com/textDifference）发现以下代码不同：
+
+横向：
+
+        @page Section1{
+            size:841.95pt 595.35pt;
+            mso-pa... <span class="read_more">Read More</span>
+        </p>
+      </a>
+      <div class="post-tags"><a class="post-tag" href="/tags.html#js">#js</a></div>
+    </li>
+<li>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE/2020/10/14/problem-map-marker.html">
+          解决在高德地图中循环加载marker并添加多个text标记文本，解决只显示最后一个标记文本的问题
+        </a>
+      </h2>
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Oct 14, 2020</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 7 mins</span>
+      </div>
+      <a class="post-excerpt" href="/%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE/2020/10/14/problem-map-marker.html">
+        <p>
+        场景： 地图运动轨迹中有多个marker，不同marker使用不同点标记进行注释，该点触发的事件需要使用文本显示出来（最后是需要移入时显示，移开时隐藏）
+
+难点： 高德地图的setlabel不能实现显示和隐藏；改用文本标记
+
+问题： 在高德地图中循环加载marker并添加多个text标记文本，解决只显示最后一个标记文本的问题
+
+解决方法：... <span class="read_more">Read More</span>
         </p>
       </a>
       <div class="post-tags">
-<a class="post-tag" href="/tags.html#jekyll">#jekyll</a><a class="post-tag" href="/tags.html#theme">#theme</a><a class="post-tag" href="/tags.html#yat">#yat</a>
+<a class="post-tag" href="/tags.html#%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE">#高德地图</a><a class="post-tag" href="/tags.html#js">#js</a>
 </div>
     </li>
 <li>
@@ -908,29 +1191,554 @@ To add new posts, simply add a file in the _posts dire... <span class="read_more
 
 
 <h2 class="post-title">
-        <a class="post-link" href="/markdown/2018/12/05/an-exhibit-of-markdown.html">
-          An exhibit of Markdown
+        <a class="post-link" href="/%E9%97%AE%E9%A2%98/2020/09/29/problem-ant-design-vue-DatePicker.html">
+          Ant Design of Vue 的DatePicker 实现只能选30天（日期控件实现只能选30天）
         </a>
       </h2>
       <div class="post-meta">
-        <span class="post-date"><i class="fa fa-calendar"></i> Dec 05, 2018</span>
+        <span class="post-date"><i class="fa fa-calendar"></i> Sep 29, 2020</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
+      </div>
+      <a class="post-excerpt" href="/%E9%97%AE%E9%A2%98/2020/09/29/problem-ant-design-vue-DatePicker.html">
+        <p>
+        需求： 只能查询30天内的数据，通过日期控件来实现
+
+实现效果： （如下）
+
+
+
+分析：
+
+
+代码：
+
+
+
+
+
+
+
+ <span class="read_more">Read More</span>
+        </p>
+      </a>
+      <div class="post-tags"><a class="post-tag" href="/tags.html#DatePicker">#DatePicker</a></div>
+    </li>
+<li>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/%E9%97%AE%E9%A2%98/2020/09/01/problem-echarts-line.html">
+          echarts的折线图数据出现坐标和值对不上的问题
+        </a>
+      </h2>
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Sep 01, 2020</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
+      </div>
+      <a class="post-excerpt" href="/%E9%97%AE%E9%A2%98/2020/09/01/problem-echarts-line.html">
+        <p>
+        问题：
+项目中需要使用不同的折线表示不同车辆的情况，后端返回的数据和折线图悬停的值是一样的，这并没有什么错误。但是细心看就会发行这些值和Y轴坐标对应不上。
+
+
+
+解决方法：
+在echarts的折线图option配置属性serise中，把每一项的stack去掉即可。
+
+当然也可以把stack的... <span class="read_more">Read More</span>
+        </p>
+      </a>
+      <div class="post-tags"><a class="post-tag" href="/tags.html#echarts">#echarts</a></div>
+    </li>
+<li>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/%E9%97%AE%E9%A2%98/2020/08/20/problem-vue-webpack.html">
+          We‘re sorry but XXX doesn‘t work properly without JavaScript enabled. Please enable it to continue.
+        </a>
+      </h2>
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Aug 20, 2020</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
+      </div>
+      <a class="post-excerpt" href="/%E9%97%AE%E9%A2%98/2020/08/20/problem-vue-webpack.html">
+        <p>
+        情景
+Vue项目打包发布到服务器，访问网址无法正常访问，打开控制台报一下错误。
+
+(https://img-blog.csdnimg.cn/20200820092450224.png)
+
+详细排查之后发现,NetWork请求报了
+(https://img-blog.csdnimg.cn/20... <span class="read_more">Read More</span>
+        </p>
+      </a>
+      <div class="post-tags"><a class="post-tag" href="/tags.html#webpack">#webpack</a></div>
+    </li>
+<li>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/%E9%97%AE%E9%A2%98/2020/08/19/problem-el-tree.html">
+          Vue:element-ui 的el-tree控件 动态加载更新
+        </a>
+      </h2>
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Aug 19, 2020</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
+      </div>
+      <a class="post-excerpt" href="/%E9%97%AE%E9%A2%98/2020/08/19/problem-el-tree.html">
+        <p>
+        element-ui官方文档提供了懒加载自定义叶子节点，主要是通过resolve()来返回
+
+
+
+
+官方提供的懒加载更新节点，只适用于接口一次性返回数据，并渲染树
+
+情景：
+
+数据量大时，需要分页加载树节点的内容，当数据一次性加载不完时，需要在内容的同级添加“加载更多…” 的节点，点击该节点时，向后端请求下一... <span class="read_more">Read More</span>
+        </p>
+      </a>
+      <div class="post-tags">
+<a class="post-tag" href="/tags.html#vue">#vue</a><a class="post-tag" href="/tags.html#element-ui">#element-ui</a>
+</div>
+    </li>
+<li>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/%E9%97%AE%E9%A2%98/2020/07/17/problem-vuex.html">
+          [vuex]unknown mutation type:setClassA
+        </a>
+      </h2>
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Jul 17, 2020</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
+      </div>
+      <a class="post-excerpt" href="/%E9%97%AE%E9%A2%98/2020/07/17/problem-vuex.html">
+        <p>
+        vue组件使用vuex中的方法报错，报unknown mutation type的错误
+
+
+
+
+vuex如果分为几个模块，方法是在模块中的话，如果直接在组件中通过this.$store.commit(“方法名”)是获取不到，必须要在前面加上模块名，如this.$store.commit(... <span class="read_more">Read More</span>
+        </p>
+      </a>
+      <div class="post-tags"><a class="post-tag" href="/tags.html#vue">#vue</a></div>
+    </li>
+<li>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/%E9%97%AE%E9%A2%98/2020/07/02/problem-sockjs.html">
+          sockjs.js?9be2:1606 GET http://172.31.42.113:8080/sockjs-node/info?t=1593658928777 net::ERR_CONNECTI
+        </a>
+      </h2>
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Jul 02, 2020</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
+      </div>
+      <a class="post-excerpt" href="/%E9%97%AE%E9%A2%98/2020/07/02/problem-sockjs.html">
+        <p>
+        运行vue项目之后，我们打开浏览器控制台运行后console控制台总报这个问题：
+
+
+
+分析原因：
+因为node-modules中的sockjs-node有问题，它是一个JavaScript库，提供跨浏览器JavaScript的API，创建了一个低延迟、全双工的浏览器和web服务器... <span class="read_more">Read More</span>
+        </p>
+      </a>
+      <div class="post-tags"><a class="post-tag" href="/tags.html#vue">#vue</a></div>
+    </li>
+<li>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/%E9%97%AE%E9%A2%98/2020/07/02/eslint.html">
+          vue-cli4.0取消eslint语法检测
+        </a>
+      </h2>
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Jul 02, 2020</span>
         <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 2 mins</span>
       </div>
-      <a class="post-excerpt" href="/markdown/2018/12/05/an-exhibit-of-markdown.html">
+      <a class="post-excerpt" href="/%E9%97%AE%E9%A2%98/2020/07/02/eslint.html">
         <p>
-        This note demonstrates some of what Markdown is capable of doing.
+        运行vue项目时报错：
+You may use special comments to disable some warnings. Use // eslint-disable
 
-An exhibit of Markdown
 
-Note: Feel free to play with this page. Unlike regular notes, this doesn’t automatically save itself.
 
-Basic formatting
+由于项目是使用vue-cli4创建的项目，目前里面没有build/webpack.base.conf.js文件。
 
-Paragraphs can be written like so. A paragraph is the basic block of Markdown. A paragraph is what text will turn into when there is no... <span class="read_more">Read More</span>
+我... <span class="read_more">Read More</span>
         </p>
       </a>
       <div class="post-tags">
-<a class="post-tag" href="/tags.html#example">#example</a><a class="post-tag" href="/tags.html#markdown">#markdown</a>
+<a class="post-tag" href="/tags.html#eslint">#eslint</a><a class="post-tag" href="/tags.html#vue">#vue</a>
 </div>
     </li>
 <li>
@@ -997,1009 +1805,651 @@ Paragraphs can be written like so. A paragraph is the basic block of Markdown. A
 
 
 <h2 class="post-title">
-        <a class="post-link" href="/markdown/2018/05/26/mathjax-test.html">
-          Mathjax Test
+        <a class="post-link" href="/%E9%97%AE%E9%A2%98/2020/06/30/problem-vue.html">
+          Vue中同一个页面引入相同组件，传值出现的问题
         </a>
       </h2>
       <div class="post-meta">
-        <span class="post-date"><i class="fa fa-calendar"></i> May 26, 2018</span>
+        <span class="post-date"><i class="fa fa-calendar"></i> Jun 30, 2020</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 4 mins</span>
+      </div>
+      <a class="post-excerpt" href="/%E9%97%AE%E9%A2%98/2020/06/30/problem-vue.html">
+        <p>
+        问题：
+
+界面默认只能显示第2个组件的值。
+
+
+代码：
+
+    //template中页面插入子组件
+    
+    &lt;span class="dataStatistics-title"&gt;车总数:&lt;/span&gt;
+    &lt;DigitRoll class="digitRo... <span class="read_more">Read More</span>
+        </p>
+      </a>
+      <div class="post-tags"><a class="post-tag" href="/tags.html#vue">#vue</a></div>
+    </li>
+<li>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/%E9%97%AE%E9%A2%98/2020/06/20/problem-array.html">
+          根据对象数组属性将数组对象分割成多个数组
+        </a>
+      </h2>
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Jun 20, 2020</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 5 mins</span>
+      </div>
+      <a class="post-excerpt" href="/%E9%97%AE%E9%A2%98/2020/06/20/problem-array.html">
+        <p>
+        场景：
+
+已选组织类型数据（这里包含多个不同的组织类型），前端需要展示不同组织类型下，已选的组织数据。
+
+分析：
+
+后端返回的是一个没有分组的对象数组，前端需要实现根据对象数组中对象的某个属性进行分类显示。
+
+举例：
+
+后端返回的数据结构如：
+
+[{
+    CreateTime: "2020-06-22 16... <span class="read_more">Read More</span>
+        </p>
+      </a>
+      <div class="post-tags"><a class="post-tag" href="/tags.html#js">#js</a></div>
+    </li>
+<li>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE/2020/06/05/problem-map.html">
+          vue项目中引入vue-amap出现的问题（刷新页面时，高德地图加载不出来）
+        </a>
+      </h2>
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Jun 05, 2020</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 3 mins</span>
+      </div>
+      <a class="post-excerpt" href="/%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE/2020/06/05/problem-map.html">
+        <p>
+        问题：
+在项目的开发中，我遇到了第一次进入页面，地图加载成功，不断刷新页面后，地图加载出问题，相关的地图函数调用报错的问题。
+
+例如：1. 项目在执行createMaker时遇到的bug 。
+
+
+
+
+  页面刷新出现识别不了el-amap标签
+
+
+
+先来看一下这个项目是如何引入vue-amap的。
+
+整个项目引入vue-am... <span class="read_more">Read More</span>
+        </p>
+      </a>
+      <div class="post-tags"><a class="post-tag" href="/tags.html#%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE">#高德地图</a></div>
+    </li>
+<li>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/%E9%97%AE%E9%A2%98/2020/04/19/problem-decodeurl.html">
+          JS获取url参数(解决中文乱码decodeURI ）
+        </a>
+      </h2>
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Apr 19, 2020</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 2 mins</span>
+      </div>
+      <a class="post-excerpt" href="/%E9%97%AE%E9%A2%98/2020/04/19/problem-decodeurl.html">
+        <p>
+        以下JS函数用于获取url参数:
+    function getQueryVariable(variable){
+            var query = window.location.search.substring(1);
+            var vars = query.spl... <span class="read_more">Read More</span>
+        </p>
+      </a>
+      <div class="post-tags"><a class="post-tag" href="/tags.html#js">#js</a></div>
+    </li>
+<li>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/%E9%97%AE%E9%A2%98/2020/04/07/problem-css.html">
+          css 的::-webkit-scrollbar 设置水平和垂直滚动条的宽度
+        </a>
+      </h2>
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Apr 07, 2020</span>
         <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
       </div>
-      <a class="post-excerpt" href="/markdown/2018/05/26/mathjax-test.html">
+      <a class="post-excerpt" href="/%E9%97%AE%E9%A2%98/2020/04/07/problem-css.html">
+        <p>
+        关键代码：
+
+
+
+结果：只能设置垂直滚动条的宽度。
+
+
+
+那::-webkit-scrollbar 如何设置水平滚动条宽度？？
+
+水平滚动条的宽度是由内容决定的，正确的说法是设置高度，直接 height: 8px
+
+代码：
+
+
+
+效果：
+
+
+
+滚动条样式的所有代码：
+
+
+ <span class="read_more">Read More</span>
+        </p>
+      </a>
+      <div class="post-tags"><a class="post-tag" href="/tags.html#css">#css</a></div>
+    </li>
+<li>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/%E9%97%AE%E9%A2%98/2019/12/10/problem-excel.html">
+          前端JS导出excel代码出现的问题：1.数字过长；2.中文乱码；3.日期格式出问题
+        </a>
+      </h2>
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Dec 10, 2019</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
+      </div>
+      <a class="post-excerpt" href="/%E9%97%AE%E9%A2%98/2019/12/10/problem-excel.html">
+        <p>
+        问题一：遇到导出excel表格时，资格证号数字过长，导出的数字串变为计数法形式
+
+
+
+解决方案一：
+&lt;td style="mso-number-format:'\@';"&gt;100821199909091234&lt;/td&gt;
+
+增加了  style=”mso-number-format... <span class="read_more">Read More</span>
+        </p>
+      </a>
+      <div class="post-tags"><a class="post-tag" href="/tags.html#js">#js</a></div>
+    </li>
+<li>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/%E9%97%AE%E9%A2%98/2019/04/05/problem-vue.html">
+          启动vue项目 npm run dev 时报errno -4058
+        </a>
+      </h2>
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Apr 05, 2019</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
+      </div>
+      <a class="post-excerpt" href="/%E9%97%AE%E9%A2%98/2019/04/05/problem-vue.html">
+        <p>
+        (https://img-blog.csdnimg.cn/2019110713550767.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZ... <span class="read_more">Read More</span>
+        </p>
+      </a>
+      <div class="post-tags"><a class="post-tag" href="/tags.html#npm">#npm</a></div>
+    </li>
+<li>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/%E9%97%AE%E9%A2%98/2019/03/01/problem-npm.html">
+          npm install报错类似于npm WARN tar ENOENT: no such file or directory, open ***\node_modules\.staging\***
+        </a>
+      </h2>
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Mar 01, 2019</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
+      </div>
+      <a class="post-excerpt" href="/%E9%97%AE%E9%A2%98/2019/03/01/problem-npm.html">
         <p>
         
-  A safe integer is an integer that
-    
-      can be exactly represented as an IEEE-754 double precision number, and
-      whose IEEE-75 representation cannot be the result of rounding any other integer to fit the IEEE-754 representation
-    
-  
-  For example, $ 2 ^ {53} - 1 $ is a safe integer,
-    
-      it can be exactly represented
-    
-  
 
+
+
+解决方法:
+删除文件 package-lock.json，再重新执行npm i或者npm install
+
+启动项目npm run serve
  <span class="read_more">Read More</span>
         </p>
       </a>
-      <div class="post-tags"><a class="post-tag" href="/tags.html#test">#test</a></div>
-    </li>
-<li>
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h2 class="post-title">
-        <a class="post-link" href="/example/2017/12/18/video-example.html">
-          Video example
-        </a>
-      </h2>
-      <div class="post-meta">
-        <span class="post-date"><i class="fa fa-calendar"></i> Dec 18, 2017</span>
-        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 3 mins</span>
-      </div>
-      <a class="post-excerpt" href="/example/2017/12/18/video-example.html">
-        <p>
-        Canon in D (Pachelbel’s Canon) - Cello &amp; Piano [BEST WEDDING VERSION]
-Some of you know that we occasionally play for weddings. As you can imagine, we get a LOT of requests for Canon in D, and we discovered that there were no good arrangements available anywhere for piano and cello! Hard to believe given its popularity. So we decided to make ... <span class="read_more">Read More</span>
-        </p>
-      </a>
-      <div class="post-tags"><a class="post-tag" href="/tags.html#video">#video</a></div>
-    </li>
-<li>
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h2 class="post-title">
-        <a class="post-link" href="/example/2017/12/15/table-example.html">
-          Table example
-        </a>
-      </h2>
-      <div class="post-meta">
-        <span class="post-date"><i class="fa fa-calendar"></i> Dec 15, 2017</span>
-        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 4 mins</span>
-      </div>
-      <a class="post-excerpt" href="/example/2017/12/15/table-example.html">
-        <p>
-        Table example as below
-
-For now, these extended features are provided:
-
-
-  Cells spanning multiple columns
-  Cells spanning multiple rows
-  Cells text align separately
-  Table header not required
-  Grouped table header rows or data rows
-
-
-Rowspan and Colspan
-^^ in a cell indicates it should be merged with the cell above.
-This feature is contribu... <span class="read_more">Read More</span>
-        </p>
-      </a>
-      <div class="post-tags"><a class="post-tag" href="/tags.html#table">#table</a></div>
-    </li>
-<li>
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h2 class="post-title">
-        <a class="post-link" href="/example/2017/12/08/mermaid-example.html">
-          Mermaid example
-        </a>
-      </h2>
-      <div class="post-meta">
-        <span class="post-date"><i class="fa fa-calendar"></i> Dec 08, 2017</span>
-        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
-      </div>
-      <a class="post-excerpt" href="/example/2017/12/08/mermaid-example.html">
-        <p>
-        1. Pie chart
-
-
-
-2. sequence diagram
-
-
-
-
-
-3. Class diagram
-
-
-4. State diagram
-
- <span class="read_more">Read More</span>
-        </p>
-      </a>
-      <div class="post-tags"><a class="post-tag" href="/tags.html#mermaid">#mermaid</a></div>
-    </li>
-<li>
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h2 class="post-title">
-        <a class="post-link" href="/example/2017/12/04/plantuml-example.html">
-          Plantuml example
-        </a>
-      </h2>
-      <div class="post-meta">
-        <span class="post-date"><i class="fa fa-calendar"></i> Dec 04, 2017</span>
-        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
-      </div>
-      <a class="post-excerpt" href="/example/2017/12/04/plantuml-example.html">
-        <p>
-        My First PlantUML
-
-PlantUML Block-1
-
-
-PlantUML Block-2
-
-
-PlantUML Block-3
-
-
-PlantUML Block-4
-
-
- <span class="read_more">Read More</span>
-        </p>
-      </a>
-      <div class="post-tags"><a class="post-tag" href="/tags.html#plantuml">#plantuml</a></div>
-    </li>
-<li>
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h2 class="post-title">
-        <a class="post-link" href="/markdown/2017/06/10/quick-mardown-example.html">
-          Quick markdown example
-        </a>
-      </h2>
-      <div class="post-meta">
-        <span class="post-date"><i class="fa fa-calendar"></i> Jun 10, 2017</span>
-        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 3 mins</span>
-      </div>
-      <a class="post-excerpt" href="/markdown/2017/06/10/quick-mardown-example.html">
-        <p>
-        Paragraphs are separated by a blank line.
-
-2nd paragraph. Italic, bold, and monospace. Itemized lists
-look like:
-
-
-  this one
-  that one
-  the other one
-
-
-Note that — not considering the asterisk — the actual text
-content starts at 4-columns in.
-
-
-  Block quotes are
-written like so.
-
-  They can span multiple paragraphs,
-if you like.
-
-
-Use 3 dash... <span class="read_more">Read More</span>
-        </p>
-      </a>
-      <div class="post-tags"><a class="post-tag" href="/tags.html#example">#example</a></div>
-    </li>
-<li>
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h2 class="post-title">
-        <a class="post-link" href="/junk/2017/05/20/this-post-demonstrates-post-content-styles.html">
-          This post demonstrates post content styles
-        </a>
-      </h2>
-      <div class="post-meta">
-        <span class="post-date"><i class="fa fa-calendar"></i> May 20, 2017</span>
-        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 4 mins</span>
-      </div>
-      <a class="post-excerpt" href="/junk/2017/05/20/this-post-demonstrates-post-content-styles.html">
-        <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum neque eget nunc mattis eu sollicitudin enim tincidunt. Vestibulum lacus tortor, ultricies id dignissim ac, bibendum in velit.
-
-Some great heading (h2)
-
-Proin convallis mi ac felis pharetra aliquam. Curabitur dignissim accumsan rutrum. In arcu magna, aliquet vel pretium et, m... <span class="read_more">Read More</span>
-        </p>
-      </a>
-      <div class="post-tags"></div>
-    </li>
-<li>
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h2 class="post-title">
-        <a class="post-link" href="/junk/2016/08/12/my-example-post.html">
-          My Example Post
-        </a>
-      </h2>
-      <div class="post-meta">
-        <span class="post-date"><i class="fa fa-calendar"></i> Aug 12, 2016</span>
-        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
-      </div>
-      <a class="post-excerpt" href="/junk/2016/08/12/my-example-post.html">
-        <p>
-        Eos eu docendi tractatos sapientem, brute option menandri in vix, quando vivendo accommodare te ius. Nec melius fastidii constituam id, viderer theophrastus ad sit, hinc semper periculis cum id. Noluisse postulant assentior est in, no choro sadipscing repudiandae vix. Vis in euismod delenit dignissim. Ex quod nostrum sit, suas decore animal id i... <span class="read_more">Read More</span>
-        </p>
-      </a>
-      <div class="post-tags"></div>
-    </li>
-<li>
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h2 class="post-title">
-        <a class="post-link" href="/misc/2016/05/20/super-long-article.html">
-          Some articles are just so long they deserve a really long title to see if things will break well
-        </a>
-      </h2>
-      <div class="post-meta">
-        <span class="post-date"><i class="fa fa-calendar"></i> May 20, 2016</span>
-        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
-      </div>
-      <a class="post-excerpt" href="/misc/2016/05/20/super-long-article.html">
-        <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum neque eget nunc mattis eu sollicitudin enim tincidunt. Vestibulum lacus tortor, ultricies id dignissim ac, bibendum in velit. Proin convallis mi ac felis pharetra aliquam. Curabitur dignissim accumsan rutrum. In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lo... <span class="read_more">Read More</span>
-        </p>
-      </a>
-      <div class="post-tags"></div>
-    </li>
-<li>
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h2 class="post-title">
-        <a class="post-link" href="/misc/2016/05/19/super-short-article.html">
-          Some articles are just so short that we have to make the footer stick
-        </a>
-      </h2>
-      <div class="post-meta">
-        <span class="post-date"><i class="fa fa-calendar"></i> May 19, 2016</span>
-        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
-      </div>
-      <a class="post-excerpt" href="/misc/2016/05/19/super-short-article.html">
-        <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur s... <span class="read_more">Read More</span>
-        </p>
-      </a>
-      <div class="post-tags"></div>
-    </li>
-<li>
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h2 class="post-title">
-        <a class="post-link" href="/markdown/2016/01/01/another-test-markdown.html">
-          Another test markdown
-        </a>
-      </h2>
-      <div class="post-meta">
-        <span class="post-date"><i class="fa fa-calendar"></i> Jan 01, 2016</span>
-        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 9 mins</span>
-      </div>
-      <a class="post-excerpt" href="/markdown/2016/01/01/another-test-markdown.html">
-        <p>
-        Put the math expression within $…$:
-
-\(\LaTeX{}\)
-
-$\Pi$
-
-$ a * b = c ^ b $
-
-$ 2^{\frac{n-1}{3}} $
-
-$ \int_a^b f(x)\,dx. $
-
-\( \int_a^b f(x)\,dx. \)
-
-
-  
-    
-      $ \rho {\rm{FOD}} = \sum\limits{\sigma ,i} {(\delta _1 - \delta _2 n_i^\sigma )
-      \phi _i^\sigma ({\bf{r}})
-      ^2} $
-    
-  
-
-
-
-  
-    
-      $$ \rho {\rm{FOD}} = \sum\limits{... <span class="read_more">Read More</span>
-        </p>
-      </a>
-      <div class="post-tags"><a class="post-tag" href="/tags.html#test">#test</a></div>
-    </li>
-<li>
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h2 class="post-title">
-        <a class="post-link" href="/markdown/2015/02/28/test-markdown.html">
-          Test markdown
-        </a>
-      </h2>
-      <div class="post-meta">
-        <span class="post-date"><i class="fa fa-calendar"></i> Feb 28, 2015</span>
-        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
-      </div>
-      <a class="post-excerpt" href="/markdown/2015/02/28/test-markdown.html">
-        <p>
-        You can write regular markdown here and Jekyll will automatically convert it to a nice webpage.  I strongly encourage you to take 5 minutes to learn how to write in markdown - it’ll teach you how to transform regular text into bold/italics/headings/tables/etc.
-
-Here is some bold text
-
-Here is a secondary heading
-
-Here’s a useless table:
-
-
-  
-   ... <span class="read_more">Read More</span>
-        </p>
-      </a>
-      <div class="post-tags"><a class="post-tag" href="/tags.html#test">#test</a></div>
+      <div class="post-tags"><a class="post-tag" href="/tags.html#npm">#npm</a></div>
     </li>
 </ul>
 
@@ -2035,38 +2485,20 @@ Here’s a useless table:
   <ul>
     <li>
       <a href="/index.html">
-        All<span>14</span>
+        全部<span>18</span>
       </a>
     </li>
 
     
       <li>
-        <a href="/categories.html#h-example">
-          example <span>4</span>
+        <a href="/categories.html#h-%E9%97%AE%E9%A2%98">
+          问题 <span>16</span>
         </a>
       </li>
     
       <li>
-        <a href="/categories.html#h-jekyll">
-          jekyll <span>1</span>
-        </a>
-      </li>
-    
-      <li>
-        <a href="/categories.html#h-junk">
-          junk <span>2</span>
-        </a>
-      </li>
-    
-      <li>
-        <a href="/categories.html#h-markdown">
-          markdown <span>5</span>
-        </a>
-      </li>
-    
-      <li>
-        <a href="/categories.html#h-misc">
-          misc <span>2</span>
+        <a href="/categories.html#h-%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE">
+          高德地图 <span>2</span>
         </a>
       </li>
     

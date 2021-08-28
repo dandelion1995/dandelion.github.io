@@ -7,20 +7,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>分类 | Dandelion Blog</title>
+<title>解决在高德地图中循环加载marker并添加多个text标记文本，解决只显示最后一个标记文本的问题 | Dandelion Blog</title>
 <meta name="generator" content="Jekyll v4.2.0">
-<meta property="og:title" content="分类">
+<meta property="og:title" content="解决在高德地图中循环加载marker并添加多个text标记文本，解决只显示最后一个标记文本的问题">
 <meta name="author" content="dandelion9508">
 <meta property="og:locale" content="zh_CN">
-<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.">
-<meta property="og:description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.">
-<link rel="canonical" href="/categories.html">
-<meta property="og:url" content="/categories.html">
+<meta name="description" content="场景： 地图运动轨迹中有多个marker，不同marker使用不同点标记进行注释，该点触发的事件需要使用文本显示出来（最后是需要移入时显示，移开时隐藏）">
+<meta property="og:description" content="场景： 地图运动轨迹中有多个marker，不同marker使用不同点标记进行注释，该点触发的事件需要使用文本显示出来（最后是需要移入时显示，移开时隐藏）">
+<link rel="canonical" href="/%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE/2020/10/14/problem-map-marker.html">
+<meta property="og:url" content="/%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE/2020/10/14/problem-map-marker.html">
 <meta property="og:site_name" content="Dandelion Blog">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2020-10-14T00:00:00+08:00">
 <meta name="twitter:card" content="summary">
-<meta property="twitter:title" content="分类">
+<meta property="twitter:title" content="解决在高德地图中循环加载marker并添加多个text标记文本，解决只显示最后一个标记文本的问题">
 <script type="application/ld+json">
-{"url":"/categories.html","description":"Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.","author":{"@type":"Person","name":"dandelion9508"},"@type":"WebPage","headline":"分类","@context":"https://schema.org"}</script>
+{"url":"/%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE/2020/10/14/problem-map-marker.html","mainEntityOfPage":{"@type":"WebPage","@id":"/%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE/2020/10/14/problem-map-marker.html"},"description":"场景： 地图运动轨迹中有多个marker，不同marker使用不同点标记进行注释，该点触发的事件需要使用文本显示出来（最后是需要移入时显示，移开时隐藏）","author":{"@type":"Person","name":"dandelion9508"},"@type":"BlogPosting","headline":"解决在高德地图中循环加载marker并添加多个text标记文本，解决只显示最后一个标记文本的问题","dateModified":"2020-10-14T00:00:00+08:00","datePublished":"2020-10-14T00:00:00+08:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="shortcut icon" href="/assets/images/girl.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -243,7 +245,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 
 
-<header class="site-header " role="banner">
+<header class="site-header site-header-transparent" role="banner">
 
   <div class="wrapper">
     <div class="site-header-inner">
@@ -522,7 +524,7 @@ function googleTranslateElementInit() {
     var documentElement = document.documentElement;
 
     function storeScrollData() {
-      var y = getScrollPos().y;var scrollStatus = "";
+      var y = getScrollPos().y;documentElement.setAttribute("data-header-transparent", "");var scrollStatus = "";
 
       if (y <= 0) {
         scrollStatus = "top";
@@ -688,7 +690,63 @@ function googleTranslateElementInit() {
 
 
 
-<script>
+<section class="page-banner">
+    <div class="page-banner-img">
+<div style="background-image: url(/assets/images/banners/fish.png)"></div>
+        <img class="img-placeholder" src="/assets/images/banners/fish.png">
+</div>
+    <div class="wrapper">
+      <div class="page-banner-inner">
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">解决在高德地图中循环加载marker并添加多个text标记文本，解决只显示最后一个标记文本的问题</h1>
+  <h2 class="post-subtitle"></h2>
+
+  <p class="post-meta">
+    <time class="dt-published" datetime="2020-10-14T00:00:00+08:00" itemprop="datePublished"><i class="fa fa-calendar"></i> Oct 14, 2020
+    </time>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 7 mins</span>
+  </p>
+<div class="post-tags">
+<a class="post-tag" href="/tags.html#%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE">#高德地图</a><a class="post-tag" href="/tags.html#js">#js</a>
+</div></header>
+</div>
+    </div>
+  </section><script>
   function hashLocate(hashValue) {
     hashValue = hashValue.replace(/^.*#h-/, '');
     hashValue = decodeURIComponent(hashValue);
@@ -846,7 +904,8 @@ function googleTranslateElementInit() {
         <div class="framework">
   <section class="main">
 
-     
+     <div class="post">
+  <section>
 
 
 
@@ -856,276 +915,149 @@ function googleTranslateElementInit() {
 
 
 
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <p><strong>场景：</strong> 地图运动轨迹中有多个marker，不同marker使用不同点标记进行注释，该点触发的事件需要使用文本显示出来（最后是需要移入时显示，移开时隐藏）</p>
+
+<p><strong>难点</strong>： 高德地图的setlabel不能实现显示和隐藏；改用文本标记</p>
+
+<p><strong>问题：</strong> 在高德地图中循环加载marker并添加多个text标记文本，解决只显示最后一个标记文本的问题</p>
+
+<p><strong>解决方法：</strong> 使用闭包，注意this 的指向。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">alarmlist</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="c1">//解决循环加载marker并添加多个text标记文本，解决只显示最后一个标记文本的问题</span>
+
+        <span class="kd">let</span> <span class="nx">_this</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+
+        <span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">i</span><span class="p">){</span>
+
+            <span class="kd">let</span> <span class="nx">lat</span> <span class="o">=</span> <span class="nx">_this</span><span class="p">.</span><span class="nx">alarmlist</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">lat</span><span class="p">;</span>
+
+            <span class="kd">let</span> <span class="nx">lon</span> <span class="o">=</span> <span class="nx">_this</span><span class="p">.</span><span class="nx">alarmlist</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">lon</span><span class="p">;</span>
+
+
+
+            <span class="nx">marker</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AMap</span><span class="p">.</span><span class="nx">Marker</span><span class="p">({</span>
+                <span class="na">icon</span><span class="p">:</span> <span class="dl">"</span><span class="s2">./images/alarmMarker.png</span><span class="dl">"</span><span class="p">,</span>
+
+                <span class="na">position</span><span class="p">:</span> <span class="p">[</span><span class="nx">lon</span><span class="p">,</span><span class="nx">lat</span><span class="p">],</span>
+
+                <span class="c1">// offset: new AMap.Pixel(-13, -30)</span>
+
+                <span class="na">offset</span><span class="p">:</span> <span class="k">new</span> <span class="nx">AMap</span><span class="p">.</span><span class="nx">Pixel</span><span class="p">(</span><span class="o">-</span><span class="mi">26</span><span class="p">,</span> <span class="o">-</span><span class="mi">13</span><span class="p">),</span>
+
+            <span class="p">});</span>
 
 
 
 
+            <span class="kd">let</span> <span class="nx">alarmtime</span> <span class="o">=</span> <span class="nx">_this</span><span class="p">.</span><span class="nx">alarmlist</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">alarmtime</span><span class="p">;</span>
+
+            <span class="kd">let</span> <span class="nx">subalarmtypestr</span> <span class="o">=</span> <span class="nx">_this</span><span class="p">.</span><span class="nx">alarmlist</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">subalarmtypestr</span><span class="p">;</span>
 
 
 
+            
 
-  
-  <div class="page-segments">
-  <ul class="page-segments-list">
-    
-    <h2 id="问题" class="segment-name">问题</h2>
-      
-      
+            <span class="c1">// 自定义点标记内容</span>
+
+            <span class="kd">var</span> <span class="nx">markerContent</span> <span class="o">=</span>  <span class="dl">"</span><span class="s2">时间:</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">alarmtime</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">类型:</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">subalarmtypestr</span> <span class="o">+</span><span class="dl">"</span><span class="s2">&lt;br/&gt;</span><span class="dl">"</span> <span class="p">;</span>
+
+                
+
+            <span class="c1">// marker.setLabel({</span>
+            <span class="c1">//     offset: new AMap.Pixel(20, 20),  //设置文本标注偏移量</span>
+
+            <span class="c1">//     content: "&lt;div class='info' style='color: #fff'&gt;"+ markerContent +"&lt;/div&gt;", //设置文本标注内容</span>
+
+            <span class="c1">//     direction: 'right' //设置文本标注方位</span>
+
+            <span class="c1">// });</span>
+
+
+
+            <span class="c1">// 创建纯文本标记</span>
+
+            <span class="kd">let</span> <span class="nx">text</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AMap</span><span class="p">.</span><span class="nx">Text</span><span class="p">({</span>
+                <span class="na">text</span><span class="p">:</span> <span class="nx">markerContent</span><span class="p">,</span>
+
+                <span class="na">anchor</span><span class="p">:</span><span class="dl">'</span><span class="s1">center</span><span class="dl">'</span><span class="p">,</span> <span class="c1">// 设置文本标记锚点</span>
+
+                <span class="na">draggable</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span>
+
+                <span class="na">cursor</span><span class="p">:</span><span class="dl">'</span><span class="s1">pointer</span><span class="dl">'</span><span class="p">,</span>
+
+                <span class="na">style</span><span class="p">:{</span>
+                    <span class="dl">'</span><span class="s1">margin-bottom</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">1rem</span><span class="dl">'</span><span class="p">,</span>
+
+                    <span class="dl">'</span><span class="s1">background-color</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">rgba(0, 255, 255, 0.5)</span><span class="dl">'</span><span class="p">,</span>
+
+                    <span class="dl">'</span><span class="s1">text-align</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">center</span><span class="dl">'</span><span class="p">,</span>
+
+                    <span class="dl">'</span><span class="s1">font-size</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">20px</span><span class="dl">'</span><span class="p">,</span>
+
+                    <span class="dl">'</span><span class="s1">color</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#fff</span><span class="dl">'</span><span class="p">,</span>
+
+                <span class="p">},</span>
+
+                <span class="na">position</span><span class="p">:</span> <span class="p">[</span><span class="nx">lon</span><span class="p">,</span><span class="nx">lat</span><span class="p">],</span>
+
+            <span class="p">});</span>
+
         
-        <li> 
-<span class="post-meta">Dec 29, 2020</span>
-<span>
-  <a class="post-link" href="/%E9%97%AE%E9%A2%98/2020/12/29/problem-table-add-slash.html">
-    table表头添加斜线
-  </a>
-</span>
- </li>
+
+            <span class="nx">AMap</span><span class="p">.</span><span class="nx">event</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="nx">marker</span><span class="p">,</span> <span class="dl">'</span><span class="s1">mouseover</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// console.log("监听事件mouseover",marker);</span>
+
+            <span class="c1">// console.log("markerContent",markerContent);</span>
+
+            <span class="nx">text</span><span class="p">.</span><span class="nx">setMap</span><span class="p">(</span><span class="nx">_this</span><span class="p">.</span><span class="nb">Map</span><span class="p">);</span>    
+
+            <span class="p">})</span>
+
+            <span class="nx">AMap</span><span class="p">.</span><span class="nx">event</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="nx">marker</span><span class="p">,</span> <span class="dl">'</span><span class="s1">mouseout</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">监听事件mouseout</span><span class="dl">"</span><span class="p">);</span>
+
+            <span class="nx">text</span><span class="p">.</span><span class="nx">setMap</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+
+            <span class="p">})</span>
+
         
-      
-        
-        <li> 
-<span class="post-meta">Dec 29, 2020</span>
-<span>
-  <a class="post-link" href="/%E9%97%AE%E9%A2%98/2020/12/29/problem-export-word-blog.html">
-    JS导出Word默认导出word页面布局-页面纸张为横向
-  </a>
-</span>
- </li>
-        
-      
-        
-        <li> 
-<span class="post-meta">Sep 29, 2020</span>
-<span>
-  <a class="post-link" href="/%E9%97%AE%E9%A2%98/2020/09/29/problem-ant-design-vue-DatePicker.html">
-    Ant Design of Vue 的DatePicker 实现只能选30天（日期控件实现只能选30天）
-  </a>
-</span>
- </li>
-        
-      
-        
-        <li> 
-<span class="post-meta">Sep 01, 2020</span>
-<span>
-  <a class="post-link" href="/%E9%97%AE%E9%A2%98/2020/09/01/problem-echarts-line.html">
-    echarts的折线图数据出现坐标和值对不上的问题
-  </a>
-</span>
- </li>
-        
-      
-        
-        <li> 
-<span class="post-meta">Aug 20, 2020</span>
-<span>
-  <a class="post-link" href="/%E9%97%AE%E9%A2%98/2020/08/20/problem-vue-webpack.html">
-    We‘re sorry but XXX doesn‘t work properly without JavaScript enabled. Please enable it to continue.
-  </a>
-</span>
- </li>
-        
-      
-        
-        <li> 
-<span class="post-meta">Aug 19, 2020</span>
-<span>
-  <a class="post-link" href="/%E9%97%AE%E9%A2%98/2020/08/19/problem-el-tree.html">
-    Vue:element-ui 的el-tree控件 动态加载更新
-  </a>
-</span>
- </li>
-        
-      
-        
-        <li> 
-<span class="post-meta">Jul 17, 2020</span>
-<span>
-  <a class="post-link" href="/%E9%97%AE%E9%A2%98/2020/07/17/problem-vuex.html">
-    [vuex]unknown mutation type:setClassA
-  </a>
-</span>
- </li>
-        
-      
-        
-        <li> 
-<span class="post-meta">Jul 02, 2020</span>
-<span>
-  <a class="post-link" href="/%E9%97%AE%E9%A2%98/2020/07/02/problem-sockjs.html">
-    sockjs.js?9be2:1606 GET http://172.31.42.113:8080/sockjs-node/info?t=1593658928777 net::ERR_CONNECTI
-  </a>
-</span>
- </li>
-        
-      
-        
-        <li> 
-<span class="post-meta">Jul 02, 2020</span>
-<span>
-  <a class="post-link" href="/%E9%97%AE%E9%A2%98/2020/07/02/eslint.html">
-    vue-cli4.0取消eslint语法检测
-  </a>
-</span>
- </li>
-        
-      
-        
-        <li> 
-<span class="post-meta">Jun 30, 2020</span>
-<span>
-  <a class="post-link" href="/%E9%97%AE%E9%A2%98/2020/06/30/problem-vue.html">
-    Vue中同一个页面引入相同组件，传值出现的问题
-  </a>
-</span>
- </li>
-        
-      
-        
-        <li> 
-<span class="post-meta">Jun 20, 2020</span>
-<span>
-  <a class="post-link" href="/%E9%97%AE%E9%A2%98/2020/06/20/problem-array.html">
-    根据对象数组属性将数组对象分割成多个数组
-  </a>
-</span>
- </li>
-        
-      
-        
-        <li> 
-<span class="post-meta">Apr 19, 2020</span>
-<span>
-  <a class="post-link" href="/%E9%97%AE%E9%A2%98/2020/04/19/problem-decodeurl.html">
-    JS获取url参数(解决中文乱码decodeURI ）
-  </a>
-</span>
- </li>
-        
-      
-        
-        <li> 
-<span class="post-meta">Apr 07, 2020</span>
-<span>
-  <a class="post-link" href="/%E9%97%AE%E9%A2%98/2020/04/07/problem-css.html">
-    css 的::-webkit-scrollbar 设置水平和垂直滚动条的宽度
-  </a>
-</span>
- </li>
-        
-      
-        
-        <li> 
-<span class="post-meta">Dec 10, 2019</span>
-<span>
-  <a class="post-link" href="/%E9%97%AE%E9%A2%98/2019/12/10/problem-excel.html">
-    前端JS导出excel代码出现的问题：1.数字过长；2.中文乱码；3.日期格式出问题
-  </a>
-</span>
- </li>
-        
-      
-        
-        <li> 
-<span class="post-meta">Apr 05, 2019</span>
-<span>
-  <a class="post-link" href="/%E9%97%AE%E9%A2%98/2019/04/05/problem-vue.html">
-    启动vue项目 npm run dev 时报errno -4058
-  </a>
-</span>
- </li>
-        
-      
-        
-        <li> 
-<span class="post-meta">Mar 01, 2019</span>
-<span>
-  <a class="post-link" href="/%E9%97%AE%E9%A2%98/2019/03/01/problem-npm.html">
-    npm install报错类似于npm WARN tar ENOENT: no such file or directory, open ***\node_modules\.staging\***
-  </a>
-</span>
- </li>
-        
-      
-    
-    <h2 id="高德地图" class="segment-name">高德地图</h2>
-      
-      
-        
-        <li> 
-<span class="post-meta">Oct 14, 2020</span>
-<span>
-  <a class="post-link" href="/%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE/2020/10/14/problem-map-marker.html">
-    解决在高德地图中循环加载marker并添加多个text标记文本，解决只显示最后一个标记文本的问题
-  </a>
-</span>
- </li>
-        
-      
-        
-        <li> 
-<span class="post-meta">Jun 05, 2020</span>
-<span>
-  <a class="post-link" href="/%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE/2020/06/05/problem-map.html">
-    vue项目中引入vue-amap出现的问题（刷新页面时，高德地图加载不出来）
-  </a>
-</span>
- </li>
-        
-      
-    
-  </ul>
+
+            <span class="nx">_this</span><span class="p">.</span><span class="nb">Map</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">marker</span><span class="p">);</span>
+
+        <span class="p">})(</span><span class="nx">i</span><span class="p">);</span>
+
+    <span class="p">}</span>
+
+</code></pre></div></div>
+
+
+    </div>
+
+</article>
+<div class="post-nav">
+<a class="previous" href="/%E9%97%AE%E9%A2%98/2020/09/29/problem-ant-design-vue-DatePicker.html" title="Ant Design of Vue 的DatePicker 实现只能选30天（日期控件实现只能选30天）">Ant Design of Vue 的DatePicker 实现只能选30天（日期控件实现只能选30天）...</a><a class="next" href="/%E9%97%AE%E9%A2%98/2020/12/29/problem-export-word-blog.html" title="JS导出Word默认导出word页面布局-页面纸张为横向">JS导出Word默认导出word页面布局-页面纸张为横向</a>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/%E9%97%AE%E9%A2%98/2020/04/19/problem-decodeurl.html" title="JS导出Word默认导出word页面布局-页面纸张为横向">JS获取url参数(解决中文乱码decodeURI ）</a></li>
+<li><a class="post-link" href="/%E9%97%AE%E9%A2%98/2020/06/20/problem-array.html" title="JS导出Word默认导出word页面布局-页面纸张为横向">根据对象数组属性将数组对象分割成多个数组</a></li>
+<li><a class="post-link" href="/%E9%97%AE%E9%A2%98/2019/04/05/problem-vue.html" title="JS导出Word默认导出word页面布局-页面纸张为横向">启动vue项目 npm run dev 时报errno -4058</a></li>
+<li><a class="post-link" href="/%E9%97%AE%E9%A2%98/2020/04/07/problem-css.html" title="JS导出Word默认导出word页面布局-页面纸张为横向">css 的::-webkit-scrollbar 设置水平和垂直滚动条的宽度</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
 </div>
 
 
   </section>
   <section class="sidebar" style="margin-left: 15px;">
-    <!-- Get sidebar items -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="common-list">
-  <ul>
-    <li>
-      <a href="/index.html">
-        全部<span>18</span>
-      </a>
-    </li>
-
-    
-      <li>
-        <a href="/categories.html#h-%E9%97%AE%E9%A2%98">
-          问题 <span>16</span>
-        </a>
-      </li>
-    
-      <li>
-        <a href="/categories.html#h-%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE">
-          高德地图 <span>2</span>
-        </a>
-      </li>
-    
-  </ul>
-</div>
-
-</section>
+    <!-- Get sidebar items --></section>
 </div>
 
       </div>
