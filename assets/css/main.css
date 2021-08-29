@@ -175,6 +175,8 @@ html[data-scroll-status='down'] .framework .sidebar { top: 20px; }
 
 .pagination .post-excerpt { color: #777; }
 
+.pagination .post-excerpt .read_more { color: #ff5100; text-decoration: underline; }
+
 .pagination .post-tags .post-tag { text-decoration: none; border: 1px solid; padding: 2px 4px; border-radius: 2px; transition: color 0.2s; }
 
 .pagination .post-tags .post-tag:not(:first-child) { margin-left: 8px; }
