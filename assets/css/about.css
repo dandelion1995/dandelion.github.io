@@ -1,0 +1,89 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html, body{
+    height: 100%;
+}
+
+.main-outter{
+    background-color: rgb(231,227,226);
+    padding: 10px 0;
+    /* position: relative; */
+}
+
+.main-container{
+    width: 1000px;
+    margin: 0 auto;
+    background-color: white;
+    font-family:'微软雅黑', Arial, Helvetica, sans-serif;
+    font-weight: 200;
+    font-size: 18px;
+    padding: 20px;
+    color: #777;
+}   
+
+.main-container .update{
+    color: #999;
+    line-height: 50px;
+    text-align: right;
+}
+
+
+/* jianli-person start */
+.person .items {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.person ul> li{
+    list-style-type: none;
+    font-size: 18px;
+    
+}
+
+.person .content{
+    padding: 20px 20px 20px 0 !important;;
+}
+
+/* jianli-person end */
+
+h1{
+    font-size: 25px;
+    line-height: 50px;
+    border-bottom: 1px solid #888;
+}
+
+h1 > i.iconfont{
+    font-size: 25px;
+    margin-right: 4px;
+    color: #4096ef;
+}
+
+ul{
+    padding-left: 20px;
+}
+
+ul > li{
+    list-style-type: lower-greek;
+}
+
+
+.resume-item .content {
+    padding: 20px;
+}
+
+
+h4{
+    font-size: 20px;
+    line-height: 40px;
+    padding-top: 10px;
+}
+
+p{
+    padding-bottom: 10px;
+    font-size: 16px;
+    line-height: 30px;
+}
