@@ -1,347 +1,1336 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-10-25T21:51:20+08:00</updated><id>/feed.xml</id><title type="html">Dandelion Blog</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>dandelion9508</name></author><entry><title type="html">JS导出Word默认导出word页面布局-页面纸张为横向</title><link href="/%E9%97%AE%E9%A2%98/2020/12/29/problem-export-word-blog.html" rel="alternate" type="text/html" title="JS导出Word默认导出word页面布局-页面纸张为横向" /><published>2020-12-29T00:00:00+08:00</published><updated>2020-12-29T00:00:00+08:00</updated><id>/%E9%97%AE%E9%A2%98/2020/12/29/problem-export-word-blog</id><content type="html" xml:base="/%E9%97%AE%E9%A2%98/2020/12/29/problem-export-word-blog.html">&lt;p&gt;导出word横向和纵向为不同的html文件，对比（在线文本差异对比：&lt;a href=&quot;https://www.jq22.com/textDifference&quot;&gt;https://www.jq22.com/textDifference&lt;/a&gt;）发现以下代码不同：&lt;/p&gt;
-
-&lt;h2 id=&quot;横向&quot;&gt;横向：&lt;/h2&gt;
-
-&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;        &lt;span class=&quot;k&quot;&gt;@page&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Section1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;nl&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;841.95pt&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;595.35pt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-            &lt;span class=&quot;nl&quot;&gt;mso-page-orientation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;landscape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-            &lt;span class=&quot;nl&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;90.0pt&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;72.0pt&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;90.0pt&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;72.0pt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-            &lt;span class=&quot;nl&quot;&gt;mso-header-margin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;42.55pt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-            &lt;span class=&quot;nl&quot;&gt;mso-footer-margin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;49.6pt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-            &lt;span class=&quot;nl&quot;&gt;mso-gutter-margin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0.0pt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-            &lt;span class=&quot;nl&quot;&gt;mso-paper-source&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-            &lt;span class=&quot;nl&quot;&gt;padding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;24.0pt&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;24.0pt&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;24.0pt&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;24.0pt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-            &lt;span class=&quot;py&quot;&gt;layout-grid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;16.3pt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-                        
-        &lt;span class=&quot;nt&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;.Section1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;nl&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Section1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;纵向&quot;&gt;纵向：&lt;/h2&gt;
-
-&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;k&quot;&gt;@page&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Section1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;595.35pt&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;841.95pt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;mso-page-orientation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;luprightness&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;72.0pt&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;90.0pt&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;72.0pt&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;90.0pt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;mso-header-margin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;42.55pt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;mso-footer-margin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;49.6pt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;mso-gutter-margin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0.0pt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;mso-paper-source&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;padding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;24.0pt&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;24.0pt&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;24.0pt&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;24.0pt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;py&quot;&gt;layout-grid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;16.3pt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        
-    &lt;span class=&quot;nt&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;.Section1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Section1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;在jquery.wordexport.js中，找到style变量的定义，将其改为一下即可&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;   
-    &lt;span class=&quot;c1&quot;&gt;// 默认横向&lt;/span&gt;
-
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;styles&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;@page Section1{size:841.95pt 595.35pt;mso-page-orientation:landscape;margin:90.0pt 72.0pt 90.0pt 72.0pt;mso-header-margin:42.55pt;mso-footer-margin:49.6pt;mso-gutter-margin:0.0pt;mso-paper-source:0;padding:24.0pt 24.0pt 24.0pt 24.0pt;layout-grid:16.3pt;} div.Section1{page:Section1;}&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>dandelion9508</name></author><category term="问题" /><category term="js" /><summary type="html">通过对比导出word横向和纵向为不同的html文件发现解决方法</summary></entry><entry><title type="html">table表头添加斜线</title><link href="/%E9%97%AE%E9%A2%98/2020/12/29/problem-table-add-slash.html" rel="alternate" type="text/html" title="table表头添加斜线" /><published>2020-12-29T00:00:00+08:00</published><updated>2020-12-29T00:00:00+08:00</updated><id>/%E9%97%AE%E9%A2%98/2020/12/29/problem-table-add-slash</id><content type="html" xml:base="/%E9%97%AE%E9%A2%98/2020/12/29/problem-table-add-slash.html">&lt;p&gt;直接上代码&lt;/p&gt;
-
-&lt;h3 id=&quot;css&quot;&gt;CSS&lt;/h3&gt;
-&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;#lineTd&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#fff&lt;/span&gt; 
-        &lt;span class=&quot;nb&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;svg&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xml&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPj&lt;/span&gt;
-        &lt;span class=&quot;err&quot;&gt;xsaW5lIHgxPSIwIiB5MT0iMCIgeDI9IjEwMCUiIHkyPSIxMDAlIiBzdHJva2U9ImJsYWNrIiBzdHJva2Utd2lkdGg9&lt;/span&gt;
-        &lt;span class=&quot;err&quot;&gt;IjEiLz48L3N2Zz4=)&lt;/span&gt; 
-        &lt;span class=&quot;err&quot;&gt;no-repeat&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;100%&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;center;&lt;/span&gt;   
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;nc&quot;&gt;.lineTd1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;margin-top&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;20px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;nc&quot;&gt;.lineTd2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;margin-top&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;-30px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;html&quot;&gt;HTML&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&quot;https://img-blog.csdnimg.cn/20201229141426695.png&quot; alt=&quot;avatar&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;效果&quot;&gt;效果&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&quot;https://img-blog.csdnimg.cn/20201229141459602.png&quot; alt=&quot;avatar&quot; /&gt;&lt;/p&gt;</content><author><name>dandelion9508</name></author><category term="问题" /><category term="css" /><summary type="html">通过css设置table表头添加斜线</summary></entry><entry><title type="html">高德地图中循环加载marker并添加多个text标记文本</title><link href="/%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE/2020/10/14/problem-map-marker.html" rel="alternate" type="text/html" title="高德地图中循环加载marker并添加多个text标记文本" /><published>2020-10-14T00:00:00+08:00</published><updated>2020-10-14T00:00:00+08:00</updated><id>/%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE/2020/10/14/problem-map-marker</id><content type="html" xml:base="/%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE/2020/10/14/problem-map-marker.html">&lt;p&gt;&lt;strong&gt;场景：&lt;/strong&gt; 地图运动轨迹中有多个marker，不同marker使用不同点标记进行注释，该点触发的事件需要使用文本显示出来（最后是需要移入时显示，移开时隐藏）&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;难点&lt;/strong&gt;： 高德地图的setlabel不能实现显示和隐藏；改用文本标记&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;问题：&lt;/strong&gt; 在高德地图中循环加载marker并添加多个text标记文本，解决只显示最后一个标记文本的问题&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;解决方法：&lt;/strong&gt; 使用闭包，注意this 的指向。&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;alarmlist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-        &lt;span class=&quot;c1&quot;&gt;//解决循环加载marker并添加多个text标记文本，解决只显示最后一个标记文本的问题&lt;/span&gt;
-
-        &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;_this&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-        &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-
-            &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;lat&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;_this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;alarmlist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;lat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-            &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;lon&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;_this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;alarmlist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;lon&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-
-
-            &lt;span class=&quot;nx&quot;&gt;marker&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;AMap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Marker&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-                &lt;span class=&quot;na&quot;&gt;icon&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;./images/alarmMarker.png&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-
-                &lt;span class=&quot;na&quot;&gt;position&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;lon&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;lat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-
-                &lt;span class=&quot;c1&quot;&gt;// offset: new AMap.Pixel(-13, -30)&lt;/span&gt;
-
-                &lt;span class=&quot;na&quot;&gt;offset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;AMap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Pixel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;26&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;13&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-
-            &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-
-
-
-
-            &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;alarmtime&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;_this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;alarmlist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;alarmtime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-            &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;subalarmtypestr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;_this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;alarmlist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;subalarmtypestr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-
-
-            
-
-            &lt;span class=&quot;c1&quot;&gt;// 自定义点标记内容&lt;/span&gt;
-
-            &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;markerContent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;  &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;时间:&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;alarmtime&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;类型:&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;subalarmtypestr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;lt;br/&amp;gt;&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-                
-
-            &lt;span class=&quot;c1&quot;&gt;// marker.setLabel({&lt;/span&gt;
-            &lt;span class=&quot;c1&quot;&gt;//     offset: new AMap.Pixel(20, 20),  //设置文本标注偏移量&lt;/span&gt;
-
-            &lt;span class=&quot;c1&quot;&gt;//     content: &quot;&amp;lt;div class='info' style='color: #fff'&amp;gt;&quot;+ markerContent +&quot;&amp;lt;/div&amp;gt;&quot;, //设置文本标注内容&lt;/span&gt;
-
-            &lt;span class=&quot;c1&quot;&gt;//     direction: 'right' //设置文本标注方位&lt;/span&gt;
-
-            &lt;span class=&quot;c1&quot;&gt;// });&lt;/span&gt;
-
-
-
-            &lt;span class=&quot;c1&quot;&gt;// 创建纯文本标记&lt;/span&gt;
-
-            &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;AMap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-                &lt;span class=&quot;na&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;markerContent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-
-                &lt;span class=&quot;na&quot;&gt;anchor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;center&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 设置文本标记锚点&lt;/span&gt;
-
-                &lt;span class=&quot;na&quot;&gt;draggable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-
-                &lt;span class=&quot;na&quot;&gt;cursor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;pointer&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-
-                &lt;span class=&quot;na&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;
-                    &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;margin-bottom&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;1rem&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-
-                    &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;background-color&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;rgba(0, 255, 255, 0.5)&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-
-                    &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;text-align&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;center&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-
-                    &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;font-size&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;20px&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-
-                    &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;#fff&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-
-                &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-
-                &lt;span class=&quot;na&quot;&gt;position&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;lon&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;lat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-
-            &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-
-        
-
-            &lt;span class=&quot;nx&quot;&gt;AMap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;marker&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;mouseover&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;c1&quot;&gt;// console.log(&quot;监听事件mouseover&quot;,marker);&lt;/span&gt;
-
-            &lt;span class=&quot;c1&quot;&gt;// console.log(&quot;markerContent&quot;,markerContent);&lt;/span&gt;
-
-            &lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setMap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;    
-
-            &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
-
-            &lt;span class=&quot;nx&quot;&gt;AMap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;marker&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;mouseout&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;监听事件mouseout&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-            &lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setMap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-            &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
-
-        
-
-            &lt;span class=&quot;nx&quot;&gt;_this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;marker&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-        &lt;span class=&quot;p&quot;&gt;})(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>dandelion9508</name></author><category term="高德地图" /><category term="高德地图" /><category term="js" /><summary type="html">解决在高德地图中循环加载marker并添加多个text标记文本，解决只显示最后一个标记文本的问题</summary></entry><entry><title type="html">DatePicker日期控件实现只能选30天</title><link href="/%E9%97%AE%E9%A2%98/2020/09/29/problem-ant-design-vue-DatePicker.html" rel="alternate" type="text/html" title="DatePicker日期控件实现只能选30天" /><published>2020-09-29T00:00:00+08:00</published><updated>2020-09-29T00:00:00+08:00</updated><id>/%E9%97%AE%E9%A2%98/2020/09/29/problem-ant-design-vue-DatePicker</id><content type="html" xml:base="/%E9%97%AE%E9%A2%98/2020/09/29/problem-ant-design-vue-DatePicker.html">&lt;p&gt;&lt;strong&gt;需求：&lt;/strong&gt; 只能查询30天内的数据，通过日期控件来实现&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;实现效果：&lt;/strong&gt; （如下）&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://img-blog.csdnimg.cn/20200929095159998.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTk4NjcyNg==,size_16,color_FFFFFF,t_70&quot; alt=&quot;avatar&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;分析：&lt;/strong&gt;
-&lt;img src=&quot;https://img-blog.csdnimg.cn/20200929095617257.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTk4NjcyNg==,size_16,color_FFFFFF,t_70&quot; alt=&quot;avatar&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;代码：&lt;/strong&gt;
-&lt;img src=&quot;https://img-blog.csdnimg.cn/20200929095419398.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTk4NjcyNg==,size_16,color_FFFFFF,t_70&quot; alt=&quot;avatar&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://img-blog.csdnimg.cn/20200929095709658.png&quot; alt=&quot;avatar&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://img-blog.csdnimg.cn/20200929095503302.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTk4NjcyNg==,size_16,color_FFFFFF,t_70&quot; alt=&quot;avatar&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://img-blog.csdnimg.cn/2020092909564391.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTk4NjcyNg==,size_16,color_FFFFFF,t_70&quot; alt=&quot;avatar&quot; /&gt;&lt;/p&gt;</content><author><name>dandelion9508</name></author><category term="问题" /><category term="DatePicker" /><summary type="html">Ant Design of Vue 的DatePicker 实现只能选30天（日期控件实现只能选30天）</summary></entry><entry><title type="html">echarts的折线图数据出现坐标和值对不上的问题</title><link href="/%E9%97%AE%E9%A2%98/2020/09/01/problem-echarts-line.html" rel="alternate" type="text/html" title="echarts的折线图数据出现坐标和值对不上的问题" /><published>2020-09-01T00:00:00+08:00</published><updated>2020-09-01T00:00:00+08:00</updated><id>/%E9%97%AE%E9%A2%98/2020/09/01/problem-echarts-line</id><content type="html" xml:base="/%E9%97%AE%E9%A2%98/2020/09/01/problem-echarts-line.html">&lt;h3 id=&quot;问题&quot;&gt;问题：&lt;/h3&gt;
-&lt;p&gt;项目中需要使用不同的折线表示不同车辆的情况，后端返回的数据和折线图悬停的值是一样的，这并没有什么错误。但是细心看就会发行这些值和Y轴坐标对应不上。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://img-blog.csdnimg.cn/2020090119305968.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTk4NjcyNg==,size_16,color_FFFFFF,t_70&quot; alt=&quot;avatar&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;解决方法&quot;&gt;解决方法：&lt;/h3&gt;
-&lt;p&gt;在echarts的折线图option配置属性serise中，把每一项的stack去掉即可。&lt;/p&gt;
-
-&lt;p&gt;当然也可以把stack的值修改，每个都不一样，就不会叠加y轴&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://img-blog.csdnimg.cn/202009011934049.png&quot; alt=&quot;avatar&quot; /&gt;&lt;/p&gt;</content><author><name>dandelion9508</name></author><category term="问题" /><category term="echarts" /><summary type="html">项目中需要使用不同的折线表示不同车辆的情况，后端返回的数据和折线图悬停的值是一样的，这并没有什么错误。但是细心看就会发行这些值和Y轴坐标对应不上。</summary></entry><entry><title type="html">We‘re sorry but XXX doesn‘t work properly without JavaScript enabled. Please enable it to continue.</title><link href="/%E9%97%AE%E9%A2%98/2020/08/20/problem-vue-webpack.html" rel="alternate" type="text/html" title="We‘re sorry but XXX doesn‘t work properly without JavaScript enabled. Please enable it to continue." /><published>2020-08-20T00:00:00+08:00</published><updated>2020-08-20T00:00:00+08:00</updated><id>/%E9%97%AE%E9%A2%98/2020/08/20/problem-vue-webpack</id><content type="html" xml:base="/%E9%97%AE%E9%A2%98/2020/08/20/problem-vue-webpack.html">&lt;h3 id=&quot;情景&quot;&gt;情景&lt;/h3&gt;
-&lt;p&gt;Vue项目打包发布到服务器，访问网址无法正常访问，打开控制台报一下错误。&lt;/p&gt;
-
-&lt;p&gt;(https://img-blog.csdnimg.cn/20200820092450224.png)&lt;/p&gt;
-
-&lt;p&gt;详细排查之后发现,NetWork请求报了
-(https://img-blog.csdnimg.cn/2020082009363626.png)&lt;/p&gt;
-
-&lt;h3 id=&quot;问题&quot;&gt;问题&lt;/h3&gt;
-&lt;p&gt;vue项目，返回信息提示为“We’re sorry but [项目名称] doesn’t work properly without JavaScript enabled. Please enable it to continue.&lt;/p&gt;
-
-&lt;h3 id=&quot;解决方法&quot;&gt;解决方法&lt;/h3&gt;
-&lt;p&gt;罗列一下其他人汇总的解决方法：&lt;/p&gt;
-
-&lt;p&gt;1.mode类型 前端修改方式：将mode类型由history改成hash；&lt;/p&gt;
-
-&lt;p&gt;2.后端修改方式：mode还是history，后端配置nginx，设置映射关系&lt;/p&gt;
-
-&lt;p&gt;3.publicpath路径问题 publicpath需要绝对路径’/’&lt;/p&gt;
-
-&lt;p&gt;4.本地开发，服务代理信息 检查代理信息是否有误，是否写有多个代理&lt;/p&gt;
-
-&lt;p&gt;按照上面的方法，找到了vue.config.js配置文件，以下配置被我注释了&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;publicPath: './',
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;去除注释，重新打包发布，即可解决。&lt;/p&gt;</content><author><name>dandelion9508</name></author><category term="问题" /><category term="webpack" /><summary type="html">ue项目打包发布到服务器，访问网址无法正常访问，打开控制台报错误。</summary></entry><entry><title type="html">Vue:element-ui 的el-tree控件 动态加载更新</title><link href="/%E9%97%AE%E9%A2%98/2020/08/19/problem-el-tree.html" rel="alternate" type="text/html" title="Vue:element-ui 的el-tree控件 动态加载更新" /><published>2020-08-19T00:00:00+08:00</published><updated>2020-08-19T00:00:00+08:00</updated><id>/%E9%97%AE%E9%A2%98/2020/08/19/problem-el-tree</id><content type="html" xml:base="/%E9%97%AE%E9%A2%98/2020/08/19/problem-el-tree.html">&lt;p&gt;element-ui官方文档提供了懒加载自定义叶子节点，主要是通过resolve()来返回
-&lt;img src=&quot;https://img-blog.csdnimg.cn/20200819161331955.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTk4NjcyNg==,size_16,color_FFFFFF,t_70&quot; alt=&quot;avatar&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://img-blog.csdnimg.cn/20200819161410793.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTk4NjcyNg==,size_16,color_FFFFFF,t_70&quot; alt=&quot;avatar&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;官方提供的懒加载更新节点，只适用于接口一次性返回数据，并渲染树&lt;/p&gt;
-
-&lt;h3 id=&quot;情景&quot;&gt;情景：&lt;/h3&gt;
-
-&lt;p&gt;数据量大时，需要分页加载树节点的内容，当数据一次性加载不完时，需要在内容的同级添加“加载更多…” 的节点，点击该节点时，向后端请求下一页的内容（删除之前添加的“加载更多…”节点，将请求得到的内容拼接在上一次请求的内容同一级节点之后）。同样情况，若还没有加载完，则显示“加载更多…”节点。&lt;/p&gt;
-
-&lt;h4 id=&quot;代码如下&quot;&gt;代码如下：&lt;/h4&gt;
-
-&lt;p&gt;添加“加载更多…”的节点：
-&lt;img src=&quot;https://img-blog.csdnimg.cn/2020081916250839.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTk4NjcyNg==,size_16,color_FFFFFF,t_70&quot; alt=&quot;avatar&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;element-ui提供了 doCreateChildren(children, defaultProps)方法创建子节点&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;nx&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;childNodes&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[];&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;　　&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//清空节点&lt;/span&gt;
-
-    &lt;span class=&quot;nx&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;doCreateChildren&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;rootChildren&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;　　&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//更新节点&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;关键代码&quot;&gt;关键代码：&lt;/h4&gt;
-
-&lt;p&gt;这里我清空的是父节点的子节点（即同级节点的内容），具体结合自己项目情况而定。
-&lt;img src=&quot;https://img-blog.csdnimg.cn/20200819162901500.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTk4NjcyNg==,size_16,color_FFFFFF,t_70&quot; alt=&quot;avatar&quot; /&gt;&lt;/p&gt;</content><author><name>dandelion9508</name></author><category term="问题" /><category term="vue" /><category term="element-ui" /><summary type="html">element-ui官方文档提供了懒加载自定义叶子节点，主要是通过resolve()来返回</summary></entry><entry><title type="html">[vuex]unknown mutation type:setClassA</title><link href="/%E9%97%AE%E9%A2%98/2020/07/17/problem-vuex.html" rel="alternate" type="text/html" title="[vuex]unknown mutation type:setClassA" /><published>2020-07-17T00:00:00+08:00</published><updated>2020-07-17T00:00:00+08:00</updated><id>/%E9%97%AE%E9%A2%98/2020/07/17/problem-vuex</id><content type="html" xml:base="/%E9%97%AE%E9%A2%98/2020/07/17/problem-vuex.html">&lt;h3 id=&quot;vue组件使用vuex中的方法报错报unknown-mutation-type的错误&quot;&gt;vue组件使用vuex中的方法报错，报unknown mutation type的错误&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&quot;https://img-blog.csdnimg.cn/20200717110800823.png&quot; alt=&quot;avatar&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://img-blog.csdnimg.cn/20200717110751390.png&quot; alt=&quot;avatar&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;vuex如果分为几个模块，方法是在模块中的话，如果直接在组件中通过this.$store.commit(“方法名”)是获取不到，必须要在前面加上模块名，如this.$store.commit(“模块名/方法名”)才可以获取到&lt;/p&gt;
-
-&lt;p&gt;项目中，我把setClassA写到store/modules/user.js中，所以这里必须加上模块名。&lt;/p&gt;</content><author><name>dandelion9508</name></author><category term="问题" /><category term="vue" /><summary type="html">vue组件使用vuex中的方法报错，报unknown mutation type的错误</summary></entry><entry><title type="html">vue-cli4.0取消eslint语法检测</title><link href="/%E9%97%AE%E9%A2%98/2020/07/02/eslint.html" rel="alternate" type="text/html" title="vue-cli4.0取消eslint语法检测" /><published>2020-07-02T00:00:00+08:00</published><updated>2020-07-02T00:00:00+08:00</updated><id>/%E9%97%AE%E9%A2%98/2020/07/02/eslint</id><content type="html" xml:base="/%E9%97%AE%E9%A2%98/2020/07/02/eslint.html">&lt;p&gt;运行vue项目时报错：&lt;/p&gt;
-&lt;font color=&quot;red&quot;&gt;You may use special comments to disable some warnings. Use // eslint-disable&lt;/font&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://img-blog.csdnimg.cn/20200702095035764.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTk4NjcyNg==,size_16,color_FFFFFF,t_70&quot; alt=&quot;avatar&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;由于项目是使用vue-cli4创建的项目，目前里面没有build/webpack.base.conf.js文件。&lt;/p&gt;
-
-&lt;p&gt;我们在最外层的根目录下新建一个vue.config.js文件&lt;/p&gt;
-
-&lt;p&gt;在里面配置&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-webpack&quot;&gt;    module.exports = {
-        devServer: {
-            overlay: {
-                warnings: false,
-                errors: false
-            }
-        }
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-04-24T11:30:53+08:00</updated><id>/feed.xml</id><title type="html">Dandelion Blog</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>dandelion9508</name></author><entry><title type="html">async函数，了解一下</title><link href="/es6/2021/10/27/ES6.html" rel="alternate" type="text/html" title="async函数，了解一下" /><published>2021-10-27T00:00:00+08:00</published><updated>2021-10-27T00:00:00+08:00</updated><id>/es6/2021/10/27/ES6</id><content type="html" xml:base="/es6/2021/10/27/ES6.html">&lt;h2 id=&quot;async-函数&quot;&gt;async 函数&lt;/h2&gt;
+&lt;p&gt;ES2017标准引入了async函数，使得异步操作变得更加方便，它就是Generator函数的语法糖。&lt;/p&gt;
+
+&lt;p&gt;async 函数返回一个Promise对象，可以使用then方法添加回调函数。当函数执行的时候，一旦遇到await就会先返回，等到异步操作完成，再接着执行函数体内后面的语句。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javaScript&quot;&gt;    async function timeout(ms){
+        await new Promise((resolve) =&amp;gt; {
+            setTimeout(resolve,ms);
+        })
     }
+    async function asyncPrint(value,ms) {
+        await timeout(ms);
+        console.log(value);
+    }
+    asyncPrint('hello world',50);
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;保存重新启动项目&lt;/p&gt;
+&lt;h3 id=&quot;函数的使用方式&quot;&gt;函数的使用方式&lt;/h3&gt;
+&lt;h4 id=&quot;1-函数声明&quot;&gt;1. 函数声明&lt;/h4&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h4 id=&quot;2-函数表达式&quot;&gt;2. 函数表达式&lt;/h4&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h4 id=&quot;3-对象的方法&quot;&gt;3. 对象的方法&lt;/h4&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){};&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(...)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h4 id=&quot;4-class的方法&quot;&gt;4. Class的方法&lt;/h4&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Storage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;constructor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cachePromise&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;caches&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;avatars&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getAvatar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+            &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;cache&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cachePromise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;cache&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;match&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;`/avatars/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.jpg`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;storage&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Storage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;storage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getAvatar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;jake&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(...);&lt;/span&gt;
+   
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h4 id=&quot;5-箭头函数&quot;&gt;5. 箭头函数&lt;/h4&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;另一种解决方法： 直接注释掉package.json文件中eslint的配置就可以了&lt;/p&gt;
+&lt;h3 id=&quot;语法&quot;&gt;语法&lt;/h3&gt;
+&lt;h4 id=&quot;返回promise对象&quot;&gt;返回Promise对象&lt;/h4&gt;
+&lt;p&gt;async函数返回一个Promise对象。
+async函数内部return 语句返回的值，会成为then方法回调函数的参数。&lt;/p&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;hello world&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;v&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;//'hello world'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;上面的代码中，函数f内部return命令返回的值会被then方法回调函数接收到。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://img-blog.csdnimg.cn/20200702135537787.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTk4NjcyNg==,size_16,color_FFFFFF,t_70&quot; alt=&quot;avatar&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;async 函数内部抛出错误会导致返回的Promise对象变为reject状态。抛出的错误对象会被catch方法回调函数接收到。&lt;/p&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;出错了&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;v&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;//Error: 出错了&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h4 id=&quot;promise对象的状态变化&quot;&gt;Promise对象的状态变化&lt;/h4&gt;
+&lt;p&gt;async 函数返回的Promise对象必须等到内部所有await命令后面的Promise对象执行完才会发生状态改变，除非遇到return语句或者抛出错误。也就是说，&lt;strong&gt;只有async函数内部的异步操作执行完，才会执行then方法指定的回调函数&lt;/strong&gt;。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-webpack&quot;&gt;
-// &quot;eslintConfig&quot;: {
- 
-//   &quot;root&quot;: true,
- 
-//   &quot;env&quot;: {
- 
-//     &quot;node&quot;: true
- 
-//   },
- 
-//   &quot;extends&quot;: [
- 
-//     &quot;plugin:vue/essential&quot;,
- 
-//     &quot;eslint:recommended&quot;,
- 
-//     &quot;@vue/prettier&quot;
- 
-//   ],
- 
-//   &quot;parserOptions&quot;: {
- 
-//     &quot;parser&quot;: &quot;babel-eslint&quot;
- 
-//   },
- 
-//   &quot;rules&quot;: {}
- 
-// },
+&lt;h4 id=&quot;await命令&quot;&gt;await命令&lt;/h4&gt;
+&lt;p&gt;正常情况下，await命令后面是一个Promise对象。如果不是，会被转成一个立即resolve的Promise对象。&lt;/p&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;123&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;v&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;//123&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;上面的代码中，await命令的参数是数值123，它被转成Promise对象立即resolve。&lt;/p&gt;
+
+&lt;p&gt;await命令后面的Promise对象如果变为reject状态，则reject的参数会被catch方法回调函数接收到。&lt;/p&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;出错了&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;v&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;//出错了&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;上面的代码中，await语句前面没有return,但是reject方法的参数依然传入了catch方法的回调函数。这里如果在await前面加上return，效果是一样的。&lt;/p&gt;
+
+&lt;h3 id=&quot;注意&quot;&gt;注意&lt;/h3&gt;
+&lt;h4 id=&quot;1-await-命令后面的promise对象运行的结果可能是rejected所以最好把await命令放在trycatch代码块中&quot;&gt;1. await 命令后面的Promise对象运行的结果可能是rejected,所以最好把await命令放在try…catch代码块中&lt;/h4&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;myFunction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;somethingThatReturnsAPromise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;另一种写法&lt;/p&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;myFunction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;somethingThatReturnsAPromise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;2-多个await命令后面的异步操作如果不存在继发关系最好让它们同时触发&quot;&gt;2. 多个await命令后面的异步操作如果不存在继发关系，最好让它们同时触发。&lt;/h4&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getFoo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;bar&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getBar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;上面的代码中，getFoo和getBar是两个独立的异步操作(即互不依赖)被写成继发关系。
+这样比较耗时，因为只有getFoo完成以后才会执行getBar,完成可以让它们同时触发。&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//写法一&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Promise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getFoo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getBar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()])&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;//写法二&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fooPromise&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getFoo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;barPromise&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getBar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fooPromise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;bar&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;barPromise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;//这两种写法中，getFoo和getBar都是同时触发，这样就会缩短程序的执行时间&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;3-await命令只能用在async函数之中如果用在普通函数中就会报错&quot;&gt;3. await命令只能用在async函数之中，如果用在普通函数中就会报错&lt;/h4&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;dbFuc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;docs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[{},{},{}];&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;//报错&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;docs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;forEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;doc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;doc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;上面的代码会报错，因为await用在普通函数中，但是。如果forEach方法的参数改为async函数，也会出问题&lt;/p&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;dbFuc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//这里不需要async&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;docs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[{},{},{}];&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;//可能得到错误的结果&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;docs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;forEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;doc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;doc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;上面的代码可能不会正常工作，原因是这时的3个db.post操作将是并发执行，即同时执行，而不是继发执行。&lt;strong&gt;正确是采用for循环&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;dbFuc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt; 
+        &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;docs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[{},{},{}];&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;doc&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;docs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;doc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;另外一种情况是希望多个请求并发执行，可以使用Promise.all方法。当3个请求都会resolved，下面两种写法效果相同。&lt;/p&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;dbFuc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;docs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[{},{},{}];&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;promises&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;docs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;doc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;doc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+
+        &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;results&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Promise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;promises&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;dbFuc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;docs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[{},{},{}];&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;promises&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;docs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;doc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;doc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+        
+        &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;results&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[];&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;promise&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;promises&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;promise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>dandelion9508</name></author><category term="ES6" /><summary type="html">async 函数返回一个Promise对象，可以使用then方法添加回调函数。当函数执行的时候，一旦遇到await就会先返回，等到异步操作完成，再接着执行函数体内后面的语句</summary></entry><entry><title type="html">Promise 全面解析</title><link href="/es6/2021/10/25/promise.html" rel="alternate" type="text/html" title="Promise 全面解析" /><published>2021-10-25T00:00:00+08:00</published><updated>2021-10-25T00:00:00+08:00</updated><id>/es6/2021/10/25/promise</id><content type="html" xml:base="/es6/2021/10/25/promise.html">&lt;h2 id=&quot;promise-全面解析&quot;&gt;Promise 全面解析&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;了解Promise诞生的历史背景&lt;/li&gt;
+  &lt;li&gt;学会使用Promise解决异步回调带来的问题&lt;/li&gt;
+  &lt;li&gt;掌握Promise的进阶用法&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;一promise是什么&quot;&gt;一、Promise是什么？&lt;/h3&gt;
+&lt;h4 id=&quot;11-词语本意&quot;&gt;1.1 词语本意&lt;/h4&gt;
+&lt;p&gt;[ˈprɒmɪs] 名词  许诺；允诺；（有）可能&lt;br /&gt;
+表示将来的状态，用在异步操作里面帮我们处理未来可能发生的事情。&lt;/p&gt;
+
+&lt;h4 id=&quot;12-mdn&quot;&gt;1.2 MDN&lt;/h4&gt;
+&lt;p&gt;Promise 对象用于表示一个异步操作的最终完成 (或失败)及其结果值。&lt;/p&gt;
+
+&lt;h4 id=&quot;13-按照用途来解释&quot;&gt;1.3 按照用途来解释&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;主要用于异步计算&lt;/li&gt;
+  &lt;li&gt;可以将异步操作队列化，按照期望的顺序执行，返回符合预期的结果。&lt;/li&gt;
+  &lt;li&gt;可以在对象之间传递和操作Promise，帮助我们处理队列。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;二为什么会有promie&quot;&gt;二、为什么会有Promie&lt;/h3&gt;
+&lt;p&gt;JavaScript包含大量异步操作。&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;JavaScript为检查表单而生。&lt;/li&gt;
+  &lt;li&gt;创造它的首要目标是操作DOM。&lt;/li&gt;
+  &lt;li&gt;所以JavaScript的操作大多是异步的。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;为什么异步操作可以避免界面冻结呢？
+异步产生的原因&lt;/p&gt;
+
+&lt;h3 id=&quot;三异步操作的常见语法&quot;&gt;三、异步操作的常见语法&lt;/h3&gt;
+&lt;h4 id=&quot;31-事件侦听与响应&quot;&gt;3.1 事件侦听与响应：&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/notes/Promise/promise1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;h4 id=&quot;32-回调&quot;&gt;3.2 回调&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/notes/Promise/promise2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;浏览器中的JavaScript&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;异步操作以事件为主&lt;/li&gt;
+  &lt;li&gt;回调主要出现在Ajax和File API&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;33-有了nodejs之后&quot;&gt;3.3 有了Node.js之后&lt;/h4&gt;
+&lt;p&gt;对异步的依赖进一步加剧了…&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;无阻塞高并发，是Node.js的招牌&lt;/li&gt;
+  &lt;li&gt;异步操作是其保障&lt;/li&gt;
+  &lt;li&gt;大量操作依赖回调函数&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;四异步回调的问题&quot;&gt;四、异步回调的问题&lt;/h3&gt;
+
+&lt;p&gt;稍有不慎，就会踏入“回调地狱”
+异步出现不好维护。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/notes/Promise/promise3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;回调有四个问题&quot;&gt;回调有四个问题&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;嵌套层次很深，难以维护&lt;/li&gt;
+  &lt;li&gt;无法正常使用return 和 throw&lt;/li&gt;
+  &lt;li&gt;无法正常检索堆栈信息&lt;/li&gt;
+  &lt;li&gt;多个回调之间难以建立联系&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;五promise&quot;&gt;五、Promise&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javaScript&quot;&gt;new Promise(
+   //执行器 executor
+   function (resolve,reject){
+      //一段耗时很长的异步操作
+      
+      resolve(); //数据处理完成
+
+      reject(); //数据处理出错
+   }
+).then(function A(){
+   //成功，下一步
+},function B(){
+   //失败，做相应处理
+})
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&quot;51-promise详解&quot;&gt;5.1 Promise详解&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;Promise是一个代理对象，它和原先要进行的操作并无关系。我们只是将原生要进行的操作放在了执行器里面。&lt;/li&gt;
+  &lt;li&gt;它通过引入一个回调，避免更多的回调。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;52-promise有3个状态&quot;&gt;5.2 Promise有3个状态&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;待定（pending）: 初始状态，既没有被兑现，也没有被拒绝。&lt;/li&gt;
+  &lt;li&gt;已兑现（fulfilled）: 意味着操作成功完成。&lt;/li&gt;
+  &lt;li&gt;已拒绝（rejected）: 意味着操作失败。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Promise状态发生改变，就会触发.then()里的响应函数处理后续步骤。
+Promise状态一经改变，不会再变。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/notes/Promise/promise4.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javaScript&quot;&gt;   console.log('here we go');
+   new Promise(resolve =&amp;gt;{
+      setTimeout(() =&amp;gt; {
+         resolve('hello')
+      },2000);
+   }).then(value =&amp;gt; {
+      console.log(value + 'world');
+   })
+
+   //here we go
+   //hello world
+
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;或者直接将：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-webpack&quot;&gt;// “eslint:recommended”, 注释掉关闭eslint
-&lt;/code&gt;&lt;/pre&gt;</content><author><name>dandelion9508</name></author><category term="问题" /><category term="eslint" /><category term="vue" /><summary type="html">You may use special comments to disable some warnings. Use // eslint-disable</summary></entry><entry><title type="html">sockjs.js?9be2:1606 GET http://172.31.42.113:8080/sockjs-node/info?t=1593658928777 net::ERR_CONNECTI</title><link href="/%E9%97%AE%E9%A2%98/2020/07/02/problem-sockjs.html" rel="alternate" type="text/html" title="sockjs.js?9be2:1606 GET http://172.31.42.113:8080/sockjs-node/info?t=1593658928777 net::ERR_CONNECTI" /><published>2020-07-02T00:00:00+08:00</published><updated>2020-07-02T00:00:00+08:00</updated><id>/%E9%97%AE%E9%A2%98/2020/07/02/problem-sockjs</id><content type="html" xml:base="/%E9%97%AE%E9%A2%98/2020/07/02/problem-sockjs.html">&lt;p&gt;运行vue项目之后，我们打开浏览器控制台运行后console控制台总报这个问题：&lt;/p&gt;
+&lt;p&gt;分两次，顺序依次执行&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://img-blog.csdnimg.cn/20210828204711769.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAZGFuZGVsaW9uOTUwOA==,size_18,color_FFFFFF,t_70,g_se,x_16&quot; alt=&quot;avatar&quot; /&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javaScript&quot;&gt;   console.log('here we go');
+   new Promise(resolve =&amp;gt;{
+      setTimeout(() =&amp;gt; {
+         resolve('hello')
+      },2000);
+   }).then(value =&amp;gt; {
+      console.log(value);
+      return new Promise(resolve =&amp;gt; {
+         setTimeout( () =&amp;gt; {
+            resolve('world')
+         },2000);
+      })
+   })
 
-&lt;p&gt;&lt;strong&gt;分析原因：&lt;/strong&gt;
-因为node-modules中的sockjs-node有问题，它是一个JavaScript库，提供跨浏览器JavaScript的API，创建了一个低延迟、全双工的浏览器和web服务器之间通信通道。在项目运行以后，network会一直调用这个接口。如果没有使用，那么就一直会报这个异常。&lt;/p&gt;
+   //here we go
+   //hello
+   //world world
 
-&lt;p&gt;&lt;strong&gt;解决方案：&lt;/strong&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;先找到：/node_modules/sockjs-client/dist/sockjs.js 文件
-然后打开sockjs.js划到1606行，注释掉：self.xhr.send(payload);&lt;/p&gt;
+&lt;h4 id=&quot;53-假如一个promise已经完成再追加then会怎样&quot;&gt;5.3 假如一个Promise已经完成，再追加.then()会怎样？&lt;/h4&gt;
+&lt;p&gt;体现promise作为队列最为重要的一个特性，先进先出，那么可以在后面追加任意多的.then(),即下一步要执行的东西。
+不管Promise的状态是完成还是未完成，队列都会按照固定的顺序去执行。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://img-blog.csdnimg.cn/20200702110829713.png&quot; alt=&quot;avatar&quot; /&gt;&lt;/p&gt;</content><author><name>dandelion9508</name></author><category term="问题" /><category term="vue" /><summary type="html">运行vue项目之后，我们打开浏览器控制台运行后console控制台总报这个问题：</summary></entry></feed>
+&lt;pre&gt;&lt;code class=&quot;language-javaScript&quot;&gt;   console.log(&quot;start&quot;);
+
+   let promise = new Promise(resolve =&amp;gt; {
+      setTimeout(() =&amp;gt; {
+         console.log(&quot;the promise fulfilled&quot;);
+         resolve('hello world');
+      },1000);
+   });
+
+   setTimeout( () =&amp;gt; {
+      promise.then( value =&amp;gt; {
+         console.log(value);
+      });
+   },3000)
+
+   //start
+   //the promise fulfilled
+   //hello world
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;54-假如在then的函数里面不返回新的promise会怎样&quot;&gt;5.4 假如在.then()的函数里面不返回新的Promise,会怎样？&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javaScript&quot;&gt;   console.log(&quot;here we go&quot;);
+
+   new Promise(resolve =&amp;gt; {
+      setTimeout(() =&amp;gt; {
+         resolve('hello');
+      },2000);
+   }).then(value =&amp;gt; {
+      console.log(value);
+      console.log('everyone');
+      (function (){
+         return new Promise(resolve =&amp;gt; {
+            setTimeout( () =&amp;gt; {
+               console.log(&quot;Mr.Laurence&quot;);
+               resolve(&quot;Merry Xmas&quot;);
+            },2000);
+         });
+      }());
+      return false; //如果return false注释掉，将会输出 //undefined world
+   }).then(value =&amp;gt; {
+      console.log( value + 'world');
+   })
+   
+   //here we go
+   //everyone
+   // false world
+   //Mr.Laurence
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;55-then&quot;&gt;5.5 .then()&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;.then()接受两个函数作为参数，分别代表fulfilled和rejected&lt;/li&gt;
+  &lt;li&gt;.then()返回一个新的Promise实例，所以它可以链式调用&lt;/li&gt;
+  &lt;li&gt;当前面的Promise状态改变时，.then()根据其最终状态，选择特定的状态响应函数执行&lt;/li&gt;
+  &lt;li&gt;状态响应函数可以返回新的Promise，或其他值,也可以返回空null&lt;/li&gt;
+  &lt;li&gt;如果返回新的Promise，那么下一级，.then()会在新Promise状态改变之后执行&lt;/li&gt;
+  &lt;li&gt;如果返回其他任何值，则会立刻执行下一级.then()&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;56-then里面有then的情况--链式调用&quot;&gt;5.6 .then()里面有.then()的情况  链式调用&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;因为.then()返回的还是Promise实例。&lt;/li&gt;
+  &lt;li&gt;会等里面的.then()执行完，再执行外面的。&lt;/li&gt;
+  &lt;li&gt;对于我们来说，此时最好将其展开，阅读效果更佳。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javaScript&quot;&gt;   console.log('start');
+   new Promise( resolve =&amp;gt; {
+      console.log('Step 1');
+      setTimeout( () =&amp;gt; {
+         resolve(100);
+      },1000);
+   }).then( value =&amp;gt; {
+      return new Promise( resolve =&amp;gt; {
+         console.log(&quot;Step 1-1&quot;);
+         setTimeout( () =&amp;gt; {
+            resolve(110);
+         },1000);
+      }).then( value =&amp;gt; {
+         console.log(&quot;Step 1-2&quot;);
+         return value;
+      }).then( value =&amp;gt; {
+         console.log(&quot;Step 1-3&quot;);
+         return value;
+      });
+   }).then(value =&amp;gt; {
+      console.log(value);
+      console.log(&quot;Step 2&quot;);
+   })
+
+   //start
+   //Step 1
+   //Step 1-1
+   //Step 1-2
+   //Step 1-3
+   //110
+   //Step 2
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;重构之后的代码如下，输出的结果一样&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javaScript&quot;&gt;   console.log('start');
+   new Promise( resolve =&amp;gt; {
+      console.log('Step 1');
+      setTimeout( () =&amp;gt; {
+         resolve(100);
+      },1000);
+   }).then( value =&amp;gt; {
+      return new Promise( resolve =&amp;gt; {
+         console.log(&quot;Step 1-1&quot;);
+         setTimeout( () =&amp;gt; {
+            resolve(110);
+         },1000);
+      })
+   }).then( value =&amp;gt; {
+      console.log(&quot;Step 1-2&quot;);
+      return value;
+   }).then( value =&amp;gt; {
+      console.log(&quot;Step 1-3&quot;);
+      return value;
+   }).then(value =&amp;gt; {
+      console.log(value);
+      console.log(&quot;Step 2&quot;);
+   })
+
+   //start
+   //Step 1
+   //Step 1-1
+   //Step 1-2
+   //Step 1-3
+   //110
+   //Step 2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;57-问题-下面的四种promise的区别是什么&quot;&gt;5.7 问题： 下面的四种Promise的区别是什么&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javaScript&quot;&gt;// #1
+doSomething().then(function(){
+   return doSomethingElse();
+});
+
+// #2
+doSomething().then(function(){
+   doSomethingElse();
+});
+
+// #3
+doSomething().then(doSomethingElse());
+
+// #4
+doSomething().then(doSomethingElse)
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;问题一&lt;/strong&gt;
+在.then()的响应函数里面返回一个promise实例
+&lt;img src=&quot;/assets/images/notes/Promise/problem1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;问题二&lt;/strong&gt;
+第一个.then()响应函数里面没有return（虽然doSomethingElse()返回了一个promise，但是这个promise实例并没有返回给.then的响应函数）&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/notes/Promise/problem2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;问题三&lt;/strong&gt;
+在第一个.then()传入了一个函数，但是这个函数采用了执行的方式传进去，也就是doSomethingElse()相当于传了一个promise实例。那这里的doSomething()和doSomethingElse()执行基本就是一致，因为它们是在同一个栈里执行的。
+因为doSomethingElse()返回的是一个Promise对象，所以这里会被忽略掉。finalHandler执行的时候侦听的是第一个doSomething()执行的时间。这个doSomethingElse()最后完成执行的时间是无关紧要的，因为它们不处于同一个队列中。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/notes/Promise/problem3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;问题四&lt;/strong&gt;
+.then()里面接受2个参数，一个是fulfilled,一个是rejected。
+这里相当于传了函数进去.then()&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/notes/Promise/problem4.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;58-错误处理&quot;&gt;5.8 错误处理&lt;/h4&gt;
+&lt;p&gt;Promise会自动捕获内部异常，并交给rejected响应函数处理。&lt;/p&gt;
+&lt;h4 id=&quot;581-错误处理的两种做法&quot;&gt;5.8.1 错误处理的两种做法：&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;reject(‘错误信息’).then(null,message =&amp;gt; {})&lt;/li&gt;
+  &lt;li&gt;throw new Error(‘错误信息’).catch(message =&amp;gt; {})
+推荐使用第二种，更加清晰好读，并且可以捕获前面的错误&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;第一种&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javaScript&quot;&gt;   console.log(&quot;here we go&quot;);
+   new Promise( (resolve, reject) =&amp;gt; {
+      setTimeout( () =&amp;gt; {
+         reject('bye');
+      },2000)
+   }).then( value =&amp;gt; {
+      console.log(value + 'world');
+   },value =&amp;gt; {
+      console.log('Error:', error.message);
+   })
+
+   //here we go
+   //Error: bye
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;第二种（推荐）&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javaScript&quot;&gt;   console.log(&quot;here we go&quot;);
+   new Promise( resolve =&amp;gt; {
+      setTimeout( () =&amp;gt; {
+         throw new Error('bye');
+      },2000)
+   }).then( value =&amp;gt; {
+      console.log(value + 'world');
+   }).catch(error =&amp;gt; {
+      console.log('Error:', error.message);
+   })
+
+   //here we go
+   // throw new Error('bye') 这里抛出了异常信息
+      Error: bye
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;em&gt;throw new Error(‘bye’) 这里抛出了异常信息,如下图：&lt;/em&gt;
+&lt;img src=&quot;/assets/images/notes/Promise/promise5.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;582-catch--then-的情况&quot;&gt;5.8.2 .catch() + .then() 的情况&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javaScript&quot;&gt;console.log(&quot;here we go&quot;);
+new Promise(resolve =&amp;gt; {
+   setTimeout(() =&amp;gt; {
+      resolve();
+   },1000);
+}).then( () =&amp;gt; {
+   console.log('start');
+   throw new Error('test error');
+}).catch(err =&amp;gt; {
+   console.log(&quot;I catch: &quot;,err);
+
+   //下面这一行注释将引发不同的走向
+   // throw new Error('another error');
+}).then( () =&amp;gt; {
+   console.log('arrive here');
+}).then( () =&amp;gt; {
+   console.log('... and here')
+}).catch( err =&amp;gt; {
+   console.log('No,I catch:', err);
+})
+
+// here we go 
+// start
+//I catch: Error: test error
+//arrive here
+//... and here
+
+如果上面的注释去掉的话，打印以下内容
+// here we go 
+// start
+//I catch: Error: test error
+//NO, I catch: Error: another error
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;
+强烈建议在所有队列最后都加上.catch(),以避免漏掉错误处理造成意想不到的问题。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javaScript&quot;&gt;doSomething()
+   .doAnotherTing()
+   .doMoreThing()
+   .catch( err =&amp;gt; {
+      console.log(err);
+   })
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;六promise函数&quot;&gt;六、Promise函数&lt;/h3&gt;
+&lt;h4 id=&quot;61-promiseall&quot;&gt;6.1 Promise.all()&lt;/h4&gt;
+&lt;p&gt;批量执行&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Promise.all([p1,p2,p3,…])用于将多个Promise实例，包装成一个新的Promise实例。&lt;/li&gt;
+  &lt;li&gt;返回的实例就是普通Promise。&lt;/li&gt;
+  &lt;li&gt;它接受一个数组作为参数。&lt;/li&gt;
+  &lt;li&gt;数组里可以是Promise对象，也可以是别的值，只有Promise会等待状态改变。&lt;/li&gt;
+  &lt;li&gt;当所有子Promise都完成，该Promise完成，返回值是全部值的数组。&lt;/li&gt;
+  &lt;li&gt;有任何一个失败，该Promise失败，返回值是第一个失败的子Promise的结果。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javaScript&quot;&gt;   console.log('here we go');
+   Promise.all([1,2,3]).then(all =&amp;gt; {
+      console.log('1: ',all);
+      return Promise.all([ function(){
+         console.log(&quot;ooxx&quot;);
+      },'xxoo',false]);
+   }).then(all =&amp;gt; {
+      console.log('2: ',all);
+      let p1 = new Promise( resolve =&amp;gt; {
+         setTimeout(() =&amp;gt; {
+            resolve('I am P1');
+         },1500);
+      });
+
+      let p2 = new Promise( resolve =&amp;gt; {
+         setTimeout(() =&amp;gt; {
+            resolve('I am P2');
+         },1450);
+      });
+
+      return Promise.all([p1,p2]);
+   }).then( all =&amp;gt; {
+      console.log('3: ', all);
+      let p1 = new Promise( resolve =&amp;gt; {
+         setTimeout(() =&amp;gt; {
+            resolve('I am P1');
+         },1500);
+      });
+
+      let p2 = new Promise( resolve =&amp;gt; {
+         setTimeout(() =&amp;gt; {
+            reject('I am P2');
+         },1000);
+      });
+
+      let p3 = new Promise( resolve =&amp;gt; {
+         setTimeout(() =&amp;gt; {
+            reject('I am P3');
+         },3000);
+      });
+
+      return Promise.all([p1,p2,p3]);
+
+   }).then( all =&amp;gt; {
+      console.log(&quot;all&quot;,all);
+   }).catch(err =&amp;gt; {
+      console.log('Catch: ',err);
+   })
+
+
+   // here we go
+   // 1: [1,2,3]
+   // 2: [[Function],'xxoo',false]
+   // 3: ['I am P1','I am P2']
+   // Catch: 'I am P2'
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&quot;62-promiseall最常见就是和map连用&quot;&gt;6.2 Promise.all最常见就是和.map()连用&lt;/h4&gt;
+&lt;p&gt;files通过map转换成一个数组，数组的每一个元素都是一个promise&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javaScript&quot;&gt;const fs = require('fs');
+const path = require('path');
+const FileSystem = require('./FileSystem');
+
+function findLargest(dir){
+   return FileSystem.readDir(dir,'utf-8').then(files =&amp;gt; {
+      return Promise.all( files.map( file =&amp;gt; {
+         return new Promise(resolve =&amp;gt; {
+            fs.stat(path.join(dir,file),(err,stat) =&amp;gt; {
+               if(err) throw err;
+               if(stat.isDirectory()){
+                  return resolve({
+                     size: 0
+                  });
+               }
+               stat.file = file;
+               resolve(stat);
+            });
+         });
+      }));
+   }).then(stats =&amp;gt; {
+      let biggest = stat.reduce( (memo,stat) =&amp;gt; {
+         if(memo.size &amp;lt; stat.size){
+            ......
+         }
+      })
+   })
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;63-实现队列&quot;&gt;6.3 实现队列&lt;/h4&gt;
+&lt;p&gt;有时候我们不希望所有动作一起发生，而是按照一定顺序，逐个进行。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javaScript&quot;&gt;let promise = doSomething();
+promise = promise.then(doSomethingElse);
+promise = promise.then(doSomethingElse2);
+promise = promise.then(doSomethingElse3);
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;使用.forEach()&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javaScript&quot;&gt;function queue(things){
+   let promise = Promise.resolve();
+   things.forEach( thing =&amp;gt; {
+      promise = promise.then( () =&amp;gt; {
+         return new Promise( resolve =&amp;gt; {
+            doThing(thing, () =&amp;gt; {
+               resolve();
+            });
+         });
+      });
+   });
+   return promise;
+}
+
+queue(['lots','of','things',...]);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;常见错误：没有把.then()产生的新Promise实例赋给promise,没有生成队列。&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;使用.reduce()
+reduce() 遍历数组，从一端遍历直到另一端&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javaScript&quot;&gt;function queue(things){
+   return things.reduce( (promise,thing) =&amp;gt; {
+      return promise.then( () =&amp;gt; {
+         return new Promise( resolve =&amp;gt; {
+            doThing(thing, () =&amp;gt; {
+               resolve()
+            });
+         });
+      });
+   },Promise.resolve());
+}
+
+queue(['lots','of','things',....]);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;常见错误： Promise实例创建之后，会立刻运行执行器代码，所以这个也无法达成队列的效果。&lt;/p&gt;
+
+&lt;h4 id=&quot;64-promiseresolve&quot;&gt;6.4 Promise.resolve()&lt;/h4&gt;
+&lt;p&gt;返回一个fulfilled的Promise实例，或原始Promise实例。&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;参数为空，返回一个状态为fulfilled的Promise实例&lt;/li&gt;
+  &lt;li&gt;参数是一个跟Promise无关的值，同上，不过fulfuilled响应函数会得到这个参数&lt;/li&gt;
+  &lt;li&gt;参数为Promise实例，则返回该实例，不做任何修改&lt;/li&gt;
+  &lt;li&gt;参数为thenable，立刻执行它的.then()&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javaScript&quot;&gt;console.log('start');
+
+Promise.resolve()
+   .then( () =&amp;gt; {
+      console.log('Step 1');
+      return Promise.resolve('Hello');
+   })
+   .then( value =&amp;gt; {
+      console.log(value,'world');
+      return Promise.resolve(new Promise (resolve =&amp;gt; {
+         setTimeout( () =&amp;gt; {
+            resolve('Good');
+         },2000);
+      }));
+   })
+   .then(value =&amp;gt; {
+      console.log(value,'evening');
+      return Promise.resolve({
+         //参数为thenable，立刻执行它的.then()
+         then(){
+            console.log(', everyone');
+         }
+      })
+   })
+
+   //start
+   //Step 1 undefined
+   //Good evening
+   //, everyone
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;65-promisereject&quot;&gt;6.5 Promise.reject()&lt;/h4&gt;
+&lt;p&gt;返回一个rejected的Promise实例。
+Promise.reject()不认thenable&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javaScript&quot;&gt;let promise = Promise.reject('something wrong');
+
+promise
+   .then( () =&amp;gt; {
+      console.log('it is ok');
+   })
+   .catch( () =&amp;gt; {
+      console.log('no,it is not ok');
+      return Promise.reject({
+         then(){
+            console.log('it will be ok');
+         },
+         catch(){
+            console.log('not yet');
+         }
+      });
+   });
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;输出结果如下：
+&lt;img src=&quot;/assets/images/notes/Promise/promise6.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;66-promiserace&quot;&gt;6.6 Promise.race()&lt;/h4&gt;
+&lt;p&gt;类似Promise.all(),区别在于它有任意一个完成就算完成。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javaScript&quot;&gt;console.log('start');
+
+let p1 = new Promise(resolve =&amp;gt; {
+   //这是一个长时间的调用
+   setTimeout(() =&amp;gt; {
+      resolve('I am P1');
+   },10000);
+});
+
+let p2 = new Promise(resolve =&amp;gt; {
+   //这是一个稍短的调用
+   setTimeout(() =&amp;gt; {
+      resolve('I am P2');
+   },2000);
+});
+
+Promise.race([p1,p2])
+   .then(value =&amp;gt; {
+      console.log(value);
+   })
+
+
+// start
+// I am P2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;常见用法：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;把异步操作和定时器放一起&lt;/li&gt;
+  &lt;li&gt;如果定时器先触发，就认为超时，告知用户&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;七现实中的promise&quot;&gt;七、现实中的Promise&lt;/h3&gt;
+&lt;p&gt;把回调包装成Promise最为常见。它有两个显而易见的好处：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;可读性更好&lt;/li&gt;
+  &lt;li&gt;返回的结果可以加入任何Promise队列&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;FileSystem.js&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javaScript&quot;&gt;const fs = require(fs);
+
+module.exports = {
+   readDir: function(path,options){
+      return new Promise( resolve =&amp;gt; {
+         fs.readdir(path,options, (err,files) =&amp;gt; {
+            if(err){
+               throw err;
+            }
+            resolve(files);
+         });
+      });
+   },
+
+   readFile: function(path,options){
+      return new Promise( resolve =&amp;gt; {
+         fs.readFile(path,options,(err,content) =&amp;gt; {
+            if(err){
+               throw err;
+            }
+
+            resolve(content);
+         })
+      })
+   }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;调用&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javaScript&quot;&gt;   const fs = require('./FileSystem');
+
+   fs.readFile('../README.md','utf-8')
+      .then(content =&amp;gt; {
+         console.log(content);
+      })
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&quot;八浏览器对于promise的支持&quot;&gt;八、浏览器对于Promise的支持&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;IE&lt;/strong&gt;
+如果你需要在IE中使用Promise，有两个选择：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;只想实现异步队列： jQuery.defered&lt;/li&gt;
+  &lt;li&gt;需要兼容所有平台： Bluebird、 Promise polyfill&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Fetch API&lt;/strong&gt;
+浏览器提供是Fetch API,
+Fetch API是XMLHttpRequest的现代化替代方案。&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;更强大，也更友好。&lt;/li&gt;
+  &lt;li&gt;直接返回一个Promise实例
+    &lt;pre&gt;&lt;code class=&quot;language-javaScript&quot;&gt;fetch('some.json')
+ .then( response =&amp;gt; {
+    return response.json();
+ })
+ .then( json =&amp;gt; {
+    //do something with the json
+ })
+ .catch( err =&amp;gt; {
+    console.log(err);
+ })
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/notes/Promise/promise7.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;九asyncawait&quot;&gt;九、async/await&lt;/h3&gt;
+&lt;p&gt;ES2017新增运算符，新的语言元素。&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;赋予JavaScript以顺序手法编写异步脚本的能力!&lt;/li&gt;
+  &lt;li&gt;既保留异步运算的无阻塞特性，还继续使用同步写法。&lt;/li&gt;
+  &lt;li&gt;还能正常使用return/try/catch&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javaScript&quot;&gt;function resolveAfter2Seconds(x){
+   return new Promise(resolve =&amp;gt; {
+      setTimeout( () =&amp;gt; {
+         resolve(x);
+      },2000);
+   })
+}
+
+async function f1(){
+   var x = await resolveAfter2Seconds(10);
+   console.log(x); //10
+}
+
+f1();
+&lt;/code&gt;&lt;/pre&gt;</content><author><name>dandelion9508</name></author><category term="ES6" /><summary type="html">Promise 对象用于表示一个异步操作的最终完成 (或失败)及其结果值。</summary></entry><entry><title type="html">重拾网络知识之HTTP和HTTPS</title><link href="/note/2021/09/10/http.html" rel="alternate" type="text/html" title="重拾网络知识之HTTP和HTTPS" /><published>2021-09-10T00:00:00+08:00</published><updated>2021-09-10T00:00:00+08:00</updated><id>/note/2021/09/10/http</id><content type="html" xml:base="/note/2021/09/10/http.html">&lt;h2 id=&quot;重拾网络知识之http和https&quot;&gt;重拾网络知识之HTTP和HTTPS&lt;/h2&gt;
+
+&lt;p&gt;首先我们先了解一下什么是HTTP和HTTPS。&lt;/p&gt;
+&lt;h3 id=&quot;什么是http&quot;&gt;什么是HTTP？&lt;/h3&gt;
+&lt;p&gt;HTTP 是客户端和服务端之间数据传输的格式规范，表示“超文本传输协议”。&lt;/p&gt;
+
+&lt;h3 id=&quot;什么是https&quot;&gt;什么是HTTPS？&lt;/h3&gt;
+&lt;p&gt;HTTP通常承载于TCP之上，在HTTP和TCP之间添加一个安全协议层（SSL 或 TSL），这个时候，就成了我们常说的HTTPS。HTTP默认的端口号是80，HTTPS默认的端口号是443。&lt;/p&gt;
+
+&lt;h3 id=&quot;完整的http事务流程是怎样的&quot;&gt;完整的HTTP事务流程是怎样的？&lt;/h3&gt;
+&lt;p&gt;基本流程如下：
+    1. 域名解析
+    2. 发起TCP的3次握手
+    3. 建立TCP连接后发起HTTP请求
+    4. 服务器端响应HTTP请求，浏览器得到HTML代码
+    5. 浏览器解析HTML代码，并请求HTML代码中的资源
+    6. 浏览器对页面进行渲染并呈现给用户。&lt;/p&gt;
+
+&lt;h3 id=&quot;http中有哪些请求方式&quot;&gt;HTTP中有哪些请求方式&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;GET： 请求访问已经被URI（统一资源标识符）识别的资源，可以通过URL，给服务器传递参数数据。&lt;/li&gt;
+  &lt;li&gt;POST: 传输信息给服务器，主要功能与GET方法类似，但传递的数据量通常不受限制。&lt;/li&gt;
+  &lt;li&gt;PUT: 传输文件，报文主体中包含文件内容，保存到对于URI位置。&lt;/li&gt;
+  &lt;li&gt;HEAD: 获得报文首部，与GET方法类似，只是不返回报文主体，一般用于验证URI是否有效。&lt;/li&gt;
+  &lt;li&gt;DELETE: 删除文件，与PUT方法相反，删除对应URI位置的文件。&lt;/li&gt;
+  &lt;li&gt;OPTIONS： 查询相应URI支持的HTTP方法。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;http的请求报文和响应报文包含哪些部分&quot;&gt;HTTP的请求报文和响应报文包含哪些部分？&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;请求报文包含三个部分&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;请求行，包含请求方法、URI、HTTP版本信息。&lt;/li&gt;
+  &lt;li&gt;请求首部字段。&lt;/li&gt;
+  &lt;li&gt;请求内容实体&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;响应报文包含3部分&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;状态行，包含HTTP版本，状态码、状态码的原因短语&lt;/li&gt;
+  &lt;li&gt;响应首部字段&lt;/li&gt;
+  &lt;li&gt;响应内容实体&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;http的首部字段包括哪些类型&quot;&gt;HTTP的首部字段包括哪些类型&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;通用首部字段（请求报文与响应报文都会使用的首部字段）。它包括以下几个部分
+    &lt;ul&gt;
+      &lt;li&gt;Date： 创建报文的时间&lt;/li&gt;
+      &lt;li&gt;Connection: 连接的管理&lt;/li&gt;
+      &lt;li&gt;Cache-Control: 缓存的控制&lt;/li&gt;
+      &lt;li&gt;Transfer-Encoding: 报文主体的传输编码方式。&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;请求首部字段（请求报文会使用的首部字段）。它包括以下几个部分
+    &lt;ul&gt;
+      &lt;li&gt;Host: 请求资源所在服务器&lt;/li&gt;
+      &lt;li&gt;Accept: 可处理的媒体类型&lt;/li&gt;
+      &lt;li&gt;Accept-Charset: 可接受的字符集&lt;/li&gt;
+      &lt;li&gt;Accept-Encoding: 可接受的内容编码。&lt;/li&gt;
+      &lt;li&gt;Accept-Language: 可接受的自然语言&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;响应首部字段（响应报文会使用的首部字段）。它包括以下几个部分：
+    &lt;ul&gt;
+      &lt;li&gt;Accept-Ranges: 可接受的字段范围&lt;/li&gt;
+      &lt;li&gt;Location: 令客户端重新定向到的URI&lt;/li&gt;
+      &lt;li&gt;Server: HTTP服务器的安装信息&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;实体首部字段（请求报文与响应报文的实体部分使用的首部字段）。它包括以下几个部分
+    &lt;ul&gt;
+      &lt;li&gt;Allow: 资源可支持的HTTP方法&lt;/li&gt;
+      &lt;li&gt;Content-Type: 实体主体的类型&lt;/li&gt;
+      &lt;li&gt;Content-Encoding: 实体主体使用的编码方式&lt;/li&gt;
+      &lt;li&gt;Content-Language: 实体主体的自然语言。&lt;/li&gt;
+      &lt;li&gt;Content-Length: 实体主体的字节数。&lt;/li&gt;
+      &lt;li&gt;Content-Range: 实体主体的位置范围，一般用于发出部分请求时使用。&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;说出你知道的http常见状态码&quot;&gt;说出你知道的HTTP常见状态码&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;100 Continue表示继续，一般发送post请求时，已发送了HTTP header 之后，服务器端将返回此信息，表示确认，之后发送具体参数信息。&lt;/li&gt;
+  &lt;li&gt;200 OK 表示正常返回信息。&lt;/li&gt;
+  &lt;li&gt;201 Created 表示请求成功并且服务器创建了新的资源。&lt;/li&gt;
+  &lt;li&gt;202 Accepted表示服务器已接受请求，但尚未处理。&lt;/li&gt;
+  &lt;li&gt;301 Moved Permanently 表示请求的网页已永久移动到新位置。&lt;/li&gt;
+  &lt;li&gt;302 Found 表示临时性重定向。&lt;/li&gt;
+  &lt;li&gt;303 See Other 表示临时性重定向，且总是使用GET请求新的URI。&lt;/li&gt;
+  &lt;li&gt;304 Not Modified表示自从上次请求后，请求的网页未修改过。&lt;/li&gt;
+  &lt;li&gt;400 Bad Request 表示服务器无法理解请求的格式，客户端不应当尝试再次使用相同的内容发起请求。&lt;/li&gt;
+  &lt;li&gt;401 Unauthorized表示请求未授权。&lt;/li&gt;
+  &lt;li&gt;403 Forbidden 表示禁止访问。&lt;/li&gt;
+  &lt;li&gt;404 Not Found 表示找不到如何于URI相匹配的资源。&lt;/li&gt;
+  &lt;li&gt;500 Internal Server Error表示常见的服务器端错误。&lt;/li&gt;
+  &lt;li&gt;503 Service Unavailable表示服务端暂时无法处理请求（可能是过载或维护）。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;什么是http无状态协议-如何克服http无状态协议的缺陷&quot;&gt;什么是HTTP无状态协议？ 如何克服HTTP无状态协议的缺陷？&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;无状态协议对于事务处理没有记忆能力。缺少状态意味着如果后续需要处理，需要前面提供的信息。&lt;/li&gt;
+  &lt;li&gt;克服无状态协议的缺陷的方法是通过cookie和会话保存信息。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;http协议中10版本规范与11版本规范的区别是什么&quot;&gt;HTTP协议中1.0版本规范与1.1版本规范的区别是什么？&lt;/h3&gt;
+&lt;p&gt;在HTTP1.0中，当建立连接后，客户端发送一个请求，服务器端返回一个信息后就关闭连接，当浏览器下次请求的时候又要建立连接。显然，这种不断建立连接的方法会造成很多问题。
+在HTTP1.1中，引入了持续连接的概念。通过这种连接，浏览器可以在建立一个连接之后，发送请求并得到返回信息，然后继续发送请求再次等到返回信息。也就是说，客户端可以连续发送多个请求，而不用等待每一个响应的到来。&lt;/p&gt;
+
+&lt;h3 id=&quot;关于http2你知道多少&quot;&gt;关于HTTP/2你知道多少？&lt;/h3&gt;
+&lt;p&gt;HTTP/2引入了“服务器端推送”（server push）的概念，它允许服务器端在客户端需要数据之前主动将数据发送到客户端缓存中，从而提高性能。
+HTTP/2提供更多的加密支持。
+HTTP/2使用多路技术，允许多个消息在一个连接上同时交差。
+它增加了头压缩（header compression），因此请求非常小，请求和响应的header都只会占用很小的带宽比例。&lt;/p&gt;
+
+&lt;h3 id=&quot;为什么https更安全&quot;&gt;为什么HTTPS更安全？&lt;/h3&gt;
+&lt;p&gt;在网络请求中，需要有很多服务器、路由器的转发。其中的节点都可能篡改信息，而如果使用HTTPS，密钥在终点站才有。HTTPS之所以比HTTP安全，是因为它利用ssl/tls协议传输，它包含证书、卸载、流量转发、负载均衡、页面适配、浏览器适配、refer传递等技术，保障了传输过程的安全性。&lt;/p&gt;</content><author><name>dandelion9508</name></author><category term="note" /><summary type="html">HTTP通常承载于TCP之上，在HTTP和TCP之间添加一个安全协议层（SSL 或 TSL），这个时候，就成了我们常说的HTTPS。HTTP默认的端口号是80，HTTPS默认的端口号是443。</summary></entry><entry><title type="html">浏览器缓存机制</title><link href="/note/2020/07/06/read-notes.html" rel="alternate" type="text/html" title="浏览器缓存机制" /><published>2020-07-06T00:00:00+08:00</published><updated>2020-07-06T00:00:00+08:00</updated><id>/note/2020/07/06/read-notes</id><content type="html" xml:base="/note/2020/07/06/read-notes.html">&lt;h2 id=&quot;浏览器缓存机制&quot;&gt;浏览器缓存机制&lt;/h2&gt;
+&lt;h3 id=&quot;一前言&quot;&gt;一、前言&lt;/h3&gt;
+
+&lt;p&gt;缓存可以说是性能优化中简单高效的一种优化方式了。一个优秀的缓存策略可以缩短网页请求资源的距离，减少延迟，并且由于缓存文件可以重复利用，还可以减少带宽，降低网络负荷。&lt;/p&gt;
+
+&lt;p&gt;对于一个数据请求来说，可以分为发起网络请求、后端处理、浏览器响应三个步骤。浏览器缓存可以帮助我们在第一和第三步骤中优化性能。比如说直接使用缓存而不发起请求，或者发起了请求但后端存储的数据和前端一致，那么就没有必要再将数据回传回来，这样就减少了响应数据。&lt;/p&gt;
+
+&lt;p&gt;接下来的内容中我们将通过缓存位置、缓存策略来探讨浏览器缓存机制。&lt;/p&gt;
+
+&lt;h3 id=&quot;二缓存位置&quot;&gt;二、缓存位置&lt;/h3&gt;
+
+&lt;p&gt;从缓存位置上来说分为四种，并且各自有优先级，当依次查找缓存且都没有命中的时候，才会去请求网络。&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Service Worker&lt;/li&gt;
+  &lt;li&gt;Memory Cache&lt;/li&gt;
+  &lt;li&gt;Disk Cache&lt;/li&gt;
+  &lt;li&gt;Push Cache&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;1service-worker&quot;&gt;1.Service Worker&lt;/h4&gt;
+
+&lt;p&gt;Service Worker 是运行在浏览器背后的独立线程，一般可以用来实现缓存功能。使用 Service Worker的话，传输协议必须为 HTTPS。因为 Service Worker 中涉及到请求拦截，所以必须使用 HTTPS 协议来保障安全。 Service Worker 的缓存与浏览器其他内建的缓存机制不同，它可以让我们自由控制缓存哪些文件、如何匹配缓存、如何读取缓存，并且缓存是持续性的。&lt;/p&gt;
+
+&lt;p&gt;Service Worker 实现缓存功能一般分为三个步骤：首先需要先注册 Service Worker，然后监听到 install 事件以后就可以缓存需要的文件，那么在下次用户访问的时候就可以通过拦截请求的方式查询是否存在缓存，存在缓存的话就可以直接读取缓存文件，否则就去请求数据。&lt;/p&gt;
+
+&lt;p&gt;当 Service Worker 没有命中缓存的时候，我们需要去调用 fetch 函数获取数据。也就是说，如果我们没有在 Service Worker 命中缓存的话，会根据缓存查找优先级去查找数据。但是不管我们是从 Memory Cache 中还是从网络请求中获取的数据，浏览器都会显示我们是从 Service Worker 中获取的内容。&lt;/p&gt;
+
+&lt;h4 id=&quot;2memory-cache&quot;&gt;2.Memory Cache&lt;/h4&gt;
+
+&lt;p&gt;Memory Cache 也就是内存中的缓存，主要包含的是当前中页面中已经抓取到的资源,例如页面上已经下载的样式、脚本、图片等。读取内存中的数据肯定比磁盘快,内存缓存虽然读取高效，可是缓存持续性很短，会随着进程的释放而释放。 一旦我们关闭 Tab 页面，内存中的缓存也就被释放了。&lt;/p&gt;
+
+&lt;p&gt;那么既然内存缓存这么高效，我们是不是能让数据都存放在内存中呢？这是不可能的。计算机中的内存一定比硬盘容量小得多，操作系统需要精打细算内存的使用，所以能让我们使用的内存必然不多。&lt;/p&gt;
+
+&lt;p&gt;当我们访问过页面以后，再次刷新页面，可以发现很多数据都来自于内存缓存&lt;/p&gt;
+
+&lt;p&gt;内存缓存中有一块重要的缓存资源是preloader相关指令（例如 &amp;lt;linkrel=”prefetch”&amp;gt;）下载的资源。众所周知preloader的相关指令已经是页面优化的常见手段之一，它可以一边解析js/css文件，一边网络请求下一个资源。&lt;/p&gt;
+
+&lt;p&gt;需要注意的事情是， 内存缓存在缓存资源时并不关心返回资源的HTTP缓存头Cache-Control是什么值，同时资源的匹配也并非仅仅是对URL做匹配，还可能会对Content-Type，CORS等其他特征做校验。&lt;/p&gt;
+
+&lt;h4 id=&quot;3disk-cache&quot;&gt;3.Disk Cache&lt;/h4&gt;
+
+&lt;p&gt;Disk Cache 也就是存储在硬盘中的缓存，读取速度慢点，但是什么都能存储到磁盘中， 比之 Memory Cache 胜在容量和存储时效性上。&lt;/p&gt;
+
+&lt;p&gt;在所有浏览器缓存中，Disk Cache 覆盖面基本是最大的。它会根据 HTTP Herder 中的字段判断哪些资源需要缓存，哪些资源可以不请求直接使用，哪些资源已经过期需要重新请求。并且即使在跨站点的情况下，相同地址的资源一旦被硬盘缓存下来，就不会再次去请求数据。绝大部分的缓存都来自 Disk Cache，关于 HTTP 的协议头中的缓存字段，我们会在下文进行详细介绍。&lt;/p&gt;
+
+&lt;p&gt;浏览器会把哪些文件丢进内存中？哪些丢进硬盘中？关于这点，网上说法不一，不过以下观点比较靠得住：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;对于大文件来说，大概率是不存储在内存中的，反之优先&lt;/li&gt;
+  &lt;li&gt;当前系统内存使用率高的话，文件优先存储进硬盘&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;4push-cache&quot;&gt;4.Push Cache&lt;/h4&gt;
+
+&lt;p&gt;Push Cache（推送缓存）是 HTTP/2 中的内容，当以上三种缓存都没有命中时，它才会被使用。 它只在会话（Session）中存在，一旦会话结束就被释放，并且缓存时间也很短暂，在Chrome浏览器中只有5分钟左右，同时它也并非严格执行HTTP头中的缓存指令。&lt;/p&gt;
+
+&lt;p&gt;Push Cache 在国内能够查到的资料很少，也是因为 HTTP/2 在国内不够普及。这里推荐阅读 JakeArchibald的 HTTP/2 push is tougher than I thought 这篇文章，文章中的几个结论：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;所有的资源都能被推送，并且能够被缓存,但是 Edge 和 Safari 浏览器支持相对比较差&lt;/li&gt;
+  &lt;li&gt;可以推送 no-cache 和 no-store 的资源&lt;/li&gt;
+  &lt;li&gt;一旦连接被关闭，Push Cache 就被释放&lt;/li&gt;
+  &lt;li&gt;多个页面可以使用同一个HTTP/2的连接，也就可以使用同一个Push Cache。这主要还是依赖浏览器的实现而定，出于对性能的考虑，有的浏览器会对相同域名但不同的tab标签使用同一个HTTP连接。&lt;/li&gt;
+  &lt;li&gt;Push Cache 中的缓存只能被使用一次&lt;/li&gt;
+  &lt;li&gt;浏览器可以拒绝接受已经存在的资源推送&lt;/li&gt;
+  &lt;li&gt;你可以给其他域名推送资源
+如果以上四种缓存都没有命中的话，那么只能发起请求来获取资源了。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;那么为了性能上的考虑，大部分的接口都应该选择好缓存策略， &lt;strong&gt;通常浏览器缓存策略分为两种：强缓存和协商缓存，并且缓存策略都是通过设置 HTTP Header 来实现的。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;三浏览器缓存策略&quot;&gt;三、浏览器缓存策略&lt;/h3&gt;
+
+&lt;h4 id=&quot;1强缓存&quot;&gt;1、强缓存&lt;/h4&gt;
+
+&lt;p&gt;服务器通知浏览器一个缓存时间，在缓存时间内，下次请求，直接用缓存，不在时间内，执行比较缓存策略。
+强缓存可以通过设置两种 HTTP Header 实现:Cache-control(相对值)、Expires(绝对值)&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Expires是http1.0的标准
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;      let nowTime = new Date();
+      nowTime.setTime(new Date().getTime() + 3600*1000);
+      ctx.set(&quot;Expires&quot;,nowTime.toUTCString())
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;到了HTTP/1.1,Expires已被Cache-Control替代
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;      ctx.set(&quot;Cache-control&quot;,&quot;max-age=3600&quot;); //设置缓存时间 3600s
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;（1）&lt;strong&gt;public&lt;/strong&gt;: 所有内容都将被缓存（客户端和代理服务器都可缓存）
+  （2）&lt;strong&gt;private&lt;/strong&gt;: 所有内容只有客户端可以缓存，Cache-Control的默认值
+  （3）&lt;strong&gt;no-cache&lt;/strong&gt;: 客户端缓存内容，但是是否使用缓存则需要经过协商缓存来验证决定
+  （4）&lt;strong&gt;no-store&lt;/strong&gt;：所有内容都不会被缓存，即不使用强制缓存，也不使用协商缓存。
+  (5)&lt;strong&gt;max-age=xxx&lt;/strong&gt;:缓存内容将在xxx秒后失效&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Cache-Control优先级比Expires高&lt;/li&gt;
+  &lt;li&gt;from memory cache代表使用内存中的缓存，from disk cache则代表使用的是硬盘中的缓存，浏览器读取缓存的顺序是memory -&amp;gt; disk&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;2协商缓存&quot;&gt;2、协商缓存&lt;/h4&gt;
+
+&lt;p&gt;让客户端与服务器之间能实现缓存文件是否更新的验证、提升缓存的复用率，将缓存信息中的Etag和Last-Modified通过请求发送给服务器，由服务器校验，返回304状态码时，浏览器直接使用缓存。出现from disk、 from memory的策略是强缓存。&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Last-Modify/if-Modify-Since&lt;/li&gt;
+  &lt;li&gt;ETag/if-None-Macth&lt;/li&gt;
+  &lt;li&gt;协商缓存的标识也是在响应报文的HTTP头中和请求结果一起返回给浏览器的，控制协商缓存的字段分别有： &lt;strong&gt;Last-Modified/If-Modified-Since和Etag/If-None-Match&lt;/strong&gt;,其中Etag/If-None-Match的优先级比Last-Modified/If-Modified-Since高。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;缓存的关系&lt;/strong&gt;
+强缓存优于协商缓存，强缓存中Cache-Control优于Expires,协商缓存中Etag/If-None-Match的优先级高于Last-Modified/If-Modified-Since。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/notes/强缓存与协商缓存.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;</content><author><name>dandelion9508</name></author><category term="note" /><summary type="html">一个优秀的缓存策略可以缩短网页请求资源的距离，减少延迟，并且由于缓存文件可以重复利用，还可以减少带宽，降低网络负荷</summary></entry><entry><title type="html">垃圾回收机制</title><link href="/es6/2020/06/20/read-notes.html" rel="alternate" type="text/html" title="垃圾回收机制" /><published>2020-06-20T00:00:00+08:00</published><updated>2020-06-20T00:00:00+08:00</updated><id>/es6/2020/06/20/read-notes</id><content type="html" xml:base="/es6/2020/06/20/read-notes.html">&lt;h2 id=&quot;垃圾回收机制&quot;&gt;垃圾回收机制&lt;/h2&gt;
+
+&lt;h3 id=&quot;垃圾回收机制闭包为什么不会被回收呢&quot;&gt;垃圾回收机制，闭包为什么不会被回收呢？&lt;/h3&gt;
+&lt;p&gt;我们先来了解一下说明时垃圾回收机制以及它的原理。
+JavaScript具有自动垃圾收集机制，执行环境会负责管理代码执行过程中使用的内存。&lt;/p&gt;
+&lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;垃圾回收机制的原理： 找出那些不再继续使用的变量，然后释放其占用的内存。
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;变量生命周期&quot;&gt;变量生命周期&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;全局变量指的是定义在所有函数之外的变量。&lt;/li&gt;
+  &lt;li&gt;局部变量所指的是在某个函数中定义的变量。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;局部变量只在函数的执行过程中存在，而这个过程中会为局部变量在栈或堆上分配相应的空间，以存储它们的值，然后在函数中使用这些变量，直到函数结束，一旦函数结束，局部变量就没有存在必要了，可以释放它们占用的内存。&lt;/p&gt;
+
+&lt;p&gt;垃圾回收器必须知道哪个变量有用，哪个变量没用。&lt;/p&gt;
+
+&lt;h4 id=&quot;标记清除&quot;&gt;标记清除&lt;/h4&gt;
+&lt;p&gt;JavaScript中最常用的垃圾收集方式是&lt;strong&gt;标记清除&lt;/strong&gt;。
+当变量进入执行环境的时候，比如函数中声明一个变量，垃圾回收器将其标记为“进入环境”，当变量离开环境的时候（函数执行结束）将其标记为“离开环境”。原则上讲不能够释放进入环境的变量所占的内存，它们随时可能会被调用得到。
+垃圾回收器会在运行的时候会给存储在内存中的所有变量加上标记，然后去掉环境中的变量所引用的变量（闭包）。在这些完成之后仍存在标记的是要删除的变量了，因为环境中的变量已经无法访问到这些变量了，然后垃圾回收器销毁这些标记的变量并回收所占的内存空间。&lt;/p&gt;
+
+&lt;h4 id=&quot;引用计数&quot;&gt;引用计数&lt;/h4&gt;
+&lt;p&gt;引用计数的策略是跟踪记录每个值被使用的次数。
+当声明一个变量并将一个引用类型值赋给该变量时，则这个值的引用次数时1。如果同一个值又被赋值给另一个变量，则该值的引用次数加1。相反，如果包含对这个值引用的变量又取另一个值，则这个值得引用次数减1。
+当这个值得引用次数变成0时，则说明没有办法再访问这个值了，因而就可以将其占用得内存空间回收回来。这样，当垃圾收集器下次再运行时，它就会释放那些引用次数为零的值所占用的内存。
+缺点： 没办法解决循环引用问题。&lt;/p&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{};&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prop&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prop&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;为了避免类似这样的循环引用问题，最好时在不使用它们的时候手工断开原生Javascript对象与DOM元素之间的连接。
+例如 :&lt;/p&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prop&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prop&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;什么时候会触发垃圾回收&quot;&gt;什么时候会触发垃圾回收&lt;/h3&gt;
+&lt;p&gt;如果垃圾收集例程回收的内存分配量低于15%，则变量、字面量和（或）数组元素的临界值就会加倍。
+如果例程回收了85%的内存分配量，则将各种临界值重置回默认值。&lt;/p&gt;
+
+&lt;h3 id=&quot;闭包为什么不会被回收呢&quot;&gt;闭包为什么不会被回收呢&lt;/h3&gt;
+&lt;p&gt;因为他本身就是建立在一个函数的内部作用域的子函数,由于可访问上级作用域的原因,即使上级函数执行完,作用域也不会被清除,这时子函数,就是闭包,就拥有了访问上级作用域中变量的权限,即使上级函数执行完,作用域内的值也不会被销毁。&lt;/p&gt;</content><author><name>dandelion9508</name></author><category term="ES6" /><summary type="html">我们先来了解一下说明时垃圾回收机制以及它的原理。垃圾回收机制的原理： 找出那些不再继续使用的变量，然后释放其占用的内存</summary></entry><entry><title type="html">事件流和事件委托</title><link href="/es6/2020/06/19/read-notes.html" rel="alternate" type="text/html" title="事件流和事件委托" /><published>2020-06-19T00:00:00+08:00</published><updated>2020-06-19T00:00:00+08:00</updated><id>/es6/2020/06/19/read-notes</id><content type="html" xml:base="/es6/2020/06/19/read-notes.html">&lt;h2 id=&quot;事件流和事件委托&quot;&gt;事件流和事件委托&lt;/h2&gt;
+
+&lt;h3 id=&quot;事件流&quot;&gt;事件流&lt;/h3&gt;
+&lt;p&gt;事件流描述的是从页面中接收到事件的顺序。IE的事件流是事件冒泡流，而Netscape Communicator的事件流是事件捕获流。&lt;/p&gt;
+
+&lt;h4 id=&quot;事件冒泡&quot;&gt;事件冒泡&lt;/h4&gt;
+&lt;p&gt;IE的事件流叫做事件冒泡，即事件开始时由最具体的元素（文档中嵌套层次最深的那个节点）接收，然后逐级向上传播到较为不具体的节点（文档）&lt;/p&gt;
+
+&lt;p&gt;以下面的HTML页面为例：&lt;/p&gt;
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;Event Bubbling Example&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;myDiv&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Click me&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;如果你单击了页面在的&amp;lt;div&amp;gt;元素，那么这个click事件会按照如下顺序传播：
+(1)&amp;lt;div&amp;gt;
+(2)&amp;lt;body&amp;gt;
+(3)&amp;lt;html&amp;gt;
+(4)document&lt;/p&gt;
+
+&lt;p&gt;click事件首先在&amp;lt;div&amp;gt;元素上发生，而这个元素就是我们单击的元素。然后，click事件沿DOM树向上传播，在每一级节点上都会发生，直至传播到document对象。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/notes/事件冒泡.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;事件捕获&quot;&gt;事件捕获&lt;/h4&gt;
+&lt;p&gt;事件捕获的思想是不太具体的节点应该更早接收到事件，而最具体的节点应该最后接收到事件。事件捕获的用意在于在事件到达预定目标之前捕获它。&lt;/p&gt;
+
+&lt;p&gt;如果你单击了页面在的&amp;lt;div&amp;gt;元素，那么这个click事件会按照如下顺序传播：
+(1)document
+(2)&amp;lt;html&amp;gt;
+(3)&amp;lt;body&amp;gt;
+(4)&amp;lt;div&amp;gt;&lt;/p&gt;
+
+&lt;p&gt;在事件捕获过程中，document对象首先接收到click事件，然后事件沿DOM树依次向下，一直传播到事件的实际目标，即&amp;lt;div&amp;gt;元素&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/notes/事件捕获.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;dom事件流&quot;&gt;DOM事件流&lt;/h4&gt;
+&lt;p&gt;“DOM2级事件”规定的事件流包括三个阶段：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;事件捕获阶段&lt;/li&gt;
+  &lt;li&gt;处于目标阶段&lt;/li&gt;
+  &lt;li&gt;事件冒泡阶段&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/notes/事件a.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;在DOM事件流中，实际的目标(&amp;lt;div&amp;gt;元素)在捕获阶段不会接收到事件。这意味着在捕获阶段，事件从document到&amp;lt;html&amp;gt;再到&amp;lt;body&amp;gt;后就停止了。下一个阶段是“处于目标”阶段，于是事件在&amp;lt;div&amp;gt;上发生，并在事件处理中被看成冒泡阶段的一部分。然后冒泡阶段也发生，事件又传播会文档。&lt;/p&gt;
+
+&lt;h3 id=&quot;事件委托&quot;&gt;事件委托&lt;/h3&gt;
+
+&lt;p&gt;对“事件处理程序过多”问题的解决方案就是事件委托。
+事件委托利用了事件冒泡，只指定了一个事件处理程序，就可以管理某一类型的所有事件。&lt;/p&gt;
+
+&lt;p&gt;事件委托也叫事件代理，“事件代理”即是把原本需要绑定在子元素的响应事件（click、keydown…）委托给父元素，让父元素担当事件监听的职务。事件代理的原理是DOM元素的事件冒泡。&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;ul&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;myLinks&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;goSomewhere&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Go somewhere&lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;doSomething&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Do something&lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sayHi&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Say hi&lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;其中包含3 个被单击后会执行操作的列表项。按照传统的做法，需要像下面这样为它们添加3 个事件处理程序&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;item1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getElementById&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;goSomewhere&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;item2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getElementById&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;doSomething&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;item3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getElementById&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;sayHi&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;EventUtil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addHandler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;item1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;location&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;href&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;http://www.wrox.com&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;EventUtil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addHandler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;item2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;title&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;I changed the document's title&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;EventUtil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addHandler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;item3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;hi&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;如果在一个复杂的Web 应用程序中，对所有可单击的元素都采用这种方式，那么结果就会有数不清的代码用于添加事件处理程序。此时，可以利用事件委托技术解决这个问题。使用事件委托，只需在DOM 树中尽量最高的层次上添加一个事件处理程序，如下面的例子所示。&lt;/p&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getElementById&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;myLinks&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;EventUtil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addHandler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;EventUtil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getEvent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;target&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;EventUtil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getTarget&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;switch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;doSomething&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;title&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;I changed the document's title&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;goSomewhere&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;location&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;href&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;http://www.wrox.com&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;sayHi&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;hi&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;在这段代码里，我们使用事件委托只为&amp;lt;ul&amp;gt;元素添加了一个onclick 事件处理程序。由于所有列表项都是这个元素的子节点，而且它们的事件会冒泡，所以单击事件最终会被这个函数处理。我们知道，事件目标是被单击的列表项，故而可以通过检测id 属性来决定采取适当的操作。与前面未使用事件委托的代码比一比，会发现这段代码的事前消耗更低，因为只取得了一个DOM 元素，只添加了一个事件处理程序。虽然对用户来说最终的结果相同，但这种技术需要占用的内存更少。所有用到按钮的事件（多数鼠标事件和键盘事件）都适合采用事件委托技术。&lt;/p&gt;
+
+&lt;p&gt;如果可行的话，也可以考虑为document 对象添加一个事件处理程序，用以处理页面上发生的某种
+特定类型的事件。这样做与采取传统的做法相比具有如下优点。&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;document 对象很快就可以访问，而且可以在页面生命周期的任何时点上为它添加事件处理程序（无需等待DOMContentLoaded 或load 事件）。换句话说，只要可单击的元素呈现在页面上，就可以立即具备适当的功能。&lt;/li&gt;
+  &lt;li&gt;在页面中设置事件处理程序所需的时间更少。只添加一个事件处理程序所需的DOM 引用更少，所花的时间也更少。&lt;/li&gt;
+  &lt;li&gt;整个页面占用的内存空间更少，能够提升整体性能。&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>dandelion9508</name></author><category term="ES6" /><summary type="html">事件流描述的是从页面中接收到事件的顺序。IE的事件流是事件冒泡流，而Netscape Communicator的事件流是事件捕获流</summary></entry></feed>

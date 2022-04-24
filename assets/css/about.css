@@ -67,7 +67,7 @@ ul{
 }
 
 ul > li{
-    list-style-type: lower-greek;
+    list-style-type: circle;
 }
 
 

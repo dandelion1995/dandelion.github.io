@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>async函数，了解一下 | Dandelion Blog</title>
+<meta name="generator" content="Jekyll v4.2.0">
+<meta property="og:title" content="async函数，了解一下">
+<meta name="author" content="dandelion9508">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="async 函数返回一个Promise对象，可以使用then方法添加回调函数。当函数执行的时候，一旦遇到await就会先返回，等到异步操作完成，再接着执行函数体内后面的语句">
+<meta property="og:description" content="async 函数返回一个Promise对象，可以使用then方法添加回调函数。当函数执行的时候，一旦遇到await就会先返回，等到异步操作完成，再接着执行函数体内后面的语句">
+<link rel="canonical" href="/es6/2021/10/27/ES6.html">
+<meta property="og:url" content="/es6/2021/10/27/ES6.html">
+<meta property="og:site_name" content="Dandelion Blog">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-10-27T00:00:00+08:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="async函数，了解一下">
+<script type="application/ld+json">
+{"url":"/es6/2021/10/27/ES6.html","headline":"async函数，了解一下","dateModified":"2021-10-27T00:00:00+08:00","datePublished":"2021-10-27T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"/es6/2021/10/27/ES6.html"},"author":{"@type":"Person","name":"dandelion9508"},"@type":"BlogPosting","description":"async 函数返回一个Promise对象，可以使用then方法添加回调函数。当函数执行的时候，一旦遇到await就会先返回，等到异步操作完成，再接着执行函数体内后面的语句","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="shortcut icon" href="/assets/images/girl.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  
+  <!-- Ionicons -->
+  <link href="https://unpkg.com/ionicons@4.2.2/dist/css/ionicons.min.css" rel="stylesheet">
+ 
+
+  <script src="/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Dandelion Blog">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/styles/default.min.css">
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/highlight.min.js"></script>
+<script charset="UTF-8" src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/languages/go.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header site-header-transparent" role="banner">
+ 
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/">
+  <img class="site-favicon" title="Dandelion Blog" src="/assets/images/girl.png" onerror="this.style.display='none'">
+  Dandelion Blog
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/">博文</a><a class="page-link" href="/resume.html">简历</a>
+</div> 
+        </nav>
+</div>
+  </div>
+</header>
+
+
+<script>
+  (function() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;documentElement.setAttribute("data-header-transparent", "");var scrollStatus = "";
+
+      if (y <= 0) {
+        scrollStatus = "top";
+      } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  })();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="page-banner">
+    <div class="page-banner-img">
+<div style="background-image: url(/assets/images/banners/fish.jpg)"></div>
+        <img class="img-placeholder" src="/assets/images/banners/fish.jpg">
+</div>
+    <div class="wrapper">
+      <div class="page-banner-inner">
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">async函数，了解一下</h1>
+  <h2 class="post-subtitle"></h2>
+
+  <p class="post-meta">
+    <time class="dt-published" datetime="2021-10-27T00:00:00+08:00" itemprop="datePublished"><i class="fa fa-calendar"></i> 2021-10-27
+    </time>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 5 mins</span> -->
+  </p></header>
+</div>
+    </div>
+  </section><script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <h2 id="async-函数">async 函数</h2>
+<p>ES2017标准引入了async函数，使得异步操作变得更加方便，它就是Generator函数的语法糖。</p>
+
+<p>async 函数返回一个Promise对象，可以使用then方法添加回调函数。当函数执行的时候，一旦遇到await就会先返回，等到异步操作完成，再接着执行函数体内后面的语句。</p>
+
+<pre><code class="language-javaScript">    async function timeout(ms){
+        await new Promise((resolve) =&gt; {
+            setTimeout(resolve,ms);
+        })
+    }
+    async function asyncPrint(value,ms) {
+        await timeout(ms);
+        console.log(value);
+    }
+    asyncPrint('hello world',50);
+</code></pre>
+
+<h3 id="函数的使用方式">函数的使用方式</h3>
+<h4 id="1-函数声明">1. 函数声明</h4>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">async</span> <span class="kd">function</span> <span class="nx">foo</span><span class="p">(){}</span>
+</code></pre></div></div>
+<h4 id="2-函数表达式">2. 函数表达式</h4>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kd">const</span> <span class="nx">foo</span> <span class="o">=</span> <span class="k">async</span> <span class="kd">function</span><span class="p">(){}</span>
+</code></pre></div></div>
+<h4 id="3-对象的方法">3. 对象的方法</h4>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kd">let</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="k">async</span> <span class="nx">foo</span><span class="p">(){};</span>
+    <span class="p">}</span>
+    <span class="nx">obj</span><span class="p">.</span><span class="nx">foo</span><span class="p">().</span><span class="nx">then</span><span class="p">(...)</span>
+</code></pre></div></div>
+<h4 id="4-class的方法">4. Class的方法</h4>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kd">class</span> <span class="nx">Storage</span><span class="p">{</span>
+        <span class="kd">constructor</span><span class="p">(){</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">cachePromise</span> <span class="o">=</span> <span class="nx">caches</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">'</span><span class="s1">avatars</span><span class="dl">'</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">async</span> <span class="nx">getAvatar</span><span class="p">(</span><span class="nx">name</span><span class="p">){</span>
+            <span class="kd">const</span> <span class="nx">cache</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">cachePromise</span><span class="p">;</span>
+            <span class="k">return</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="s2">`/avatars/</span><span class="p">${</span><span class="nx">name</span><span class="p">}</span><span class="s2">.jpg`</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="kd">const</span> <span class="nx">storage</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Storage</span><span class="p">();</span>
+    <span class="nx">storage</span><span class="p">.</span><span class="nx">getAvatar</span><span class="p">(</span><span class="dl">'</span><span class="s1">jake</span><span class="dl">'</span><span class="p">).</span><span class="nx">then</span><span class="p">(...);</span>
+   
+</code></pre></div></div>
+<h4 id="5-箭头函数">5. 箭头函数</h4>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kd">const</span> <span class="nx">foo</span> <span class="o">=</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{};</span>
+</code></pre></div></div>
+
+<h3 id="语法">语法</h3>
+<h4 id="返回promise对象">返回Promise对象</h4>
+<p>async函数返回一个Promise对象。
+async函数内部return 语句返回的值，会成为then方法回调函数的参数。</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">async</span> <span class="kd">function</span> <span class="nx">f</span><span class="p">(){</span>
+        <span class="k">return</span> <span class="dl">'</span><span class="s1">hello world</span><span class="dl">'</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nx">f</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="nx">v</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">v</span><span class="p">))</span>
+    <span class="c1">//'hello world'</span>
+</code></pre></div></div>
+<p>上面的代码中，函数f内部return命令返回的值会被then方法回调函数接收到。</p>
+
+<p>async 函数内部抛出错误会导致返回的Promise对象变为reject状态。抛出的错误对象会被catch方法回调函数接收到。</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">async</span> <span class="kd">function</span> <span class="nx">f</span><span class="p">(){</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">出错了</span><span class="dl">'</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="nx">f</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span>
+        <span class="nx">v</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">v</span><span class="p">),</span>
+        <span class="nx">e</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="c1">//Error: 出错了</span>
+</code></pre></div></div>
+<h4 id="promise对象的状态变化">Promise对象的状态变化</h4>
+<p>async 函数返回的Promise对象必须等到内部所有await命令后面的Promise对象执行完才会发生状态改变，除非遇到return语句或者抛出错误。也就是说，<strong>只有async函数内部的异步操作执行完，才会执行then方法指定的回调函数</strong>。</p>
+
+<h4 id="await命令">await命令</h4>
+<p>正常情况下，await命令后面是一个Promise对象。如果不是，会被转成一个立即resolve的Promise对象。</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">async</span> <span class="kd">function</span> <span class="nx">f</span><span class="p">(){</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="mi">123</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nx">f</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span>
+        <span class="nx">v</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">v</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="c1">//123</span>
+</code></pre></div></div>
+<p>上面的代码中，await命令的参数是数值123，它被转成Promise对象立即resolve。</p>
+
+<p>await命令后面的Promise对象如果变为reject状态，则reject的参数会被catch方法回调函数接收到。</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">async</span> <span class="kd">function</span> <span class="nx">f</span><span class="p">(){</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">出错了</span><span class="dl">'</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="nx">f</span><span class="p">()</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span> <span class="nx">v</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">v</span><span class="p">))</span>
+    <span class="p">.</span><span class="k">catch</span><span class="p">(</span> <span class="nx">e</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">))</span>
+    <span class="c1">//出错了</span>
+</code></pre></div></div>
+<p>上面的代码中，await语句前面没有return,但是reject方法的参数依然传入了catch方法的回调函数。这里如果在await前面加上return，效果是一样的。</p>
+
+<h3 id="注意">注意</h3>
+<h4 id="1-await-命令后面的promise对象运行的结果可能是rejected所以最好把await命令放在trycatch代码块中">1. await 命令后面的Promise对象运行的结果可能是rejected,所以最好把await命令放在try…catch代码块中</h4>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">async</span> <span class="kd">function</span> <span class="nx">myFunction</span><span class="p">(){</span>
+        <span class="k">try</span><span class="p">{</span>
+            <span class="k">await</span> <span class="nx">somethingThatReturnsAPromise</span><span class="p">();</span>
+        <span class="p">}</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+<p>另一种写法</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">async</span> <span class="kd">function</span> <span class="nx">myFunction</span><span class="p">(){</span>
+        <span class="k">await</span> <span class="nx">somethingThatReturnsAPromise</span><span class="p">()</span>
+        <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">){</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+        <span class="p">})</span>
+    <span class="p">}</span>
+
+</code></pre></div></div>
+
+<h4 id="2-多个await命令后面的异步操作如果不存在继发关系最好让它们同时触发">2. 多个await命令后面的异步操作如果不存在继发关系，最好让它们同时触发。</h4>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kd">let</span> <span class="nx">foo</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">getFoo</span><span class="p">();</span>
+    <span class="kd">let</span> <span class="nx">bar</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">getBar</span><span class="p">();</span>
+</code></pre></div></div>
+<p>上面的代码中，getFoo和getBar是两个独立的异步操作(即互不依赖)被写成继发关系。
+这样比较耗时，因为只有getFoo完成以后才会执行getBar,完成可以让它们同时触发。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//写法一</span>
+<span class="kd">let</span> <span class="p">[</span><span class="nx">foo</span><span class="p">,</span><span class="nx">bar</span><span class="p">]</span> <span class="o">=</span> <span class="k">await</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span><span class="nx">getFoo</span><span class="p">(),</span><span class="nx">getBar</span><span class="p">()])</span>
+
+<span class="c1">//写法二</span>
+<span class="kd">let</span> <span class="nx">fooPromise</span> <span class="o">=</span> <span class="nx">getFoo</span><span class="p">();</span>
+<span class="kd">let</span> <span class="nx">barPromise</span> <span class="o">=</span> <span class="nx">getBar</span><span class="p">();</span>
+<span class="kd">let</span> <span class="nx">foo</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fooPromise</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">bar</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">barPromise</span><span class="p">;</span>
+
+<span class="c1">//这两种写法中，getFoo和getBar都是同时触发，这样就会缩短程序的执行时间</span>
+</code></pre></div></div>
+
+<h4 id="3-await命令只能用在async函数之中如果用在普通函数中就会报错">3. await命令只能用在async函数之中，如果用在普通函数中就会报错</h4>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">async</span> <span class="kd">function</span> <span class="nx">dbFuc</span><span class="p">(</span><span class="nx">db</span><span class="p">){</span>
+        <span class="kd">let</span> <span class="nx">docs</span> <span class="o">=</span> <span class="p">[{},{},{}];</span>
+
+        <span class="c1">//报错</span>
+        <span class="nx">docs</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">doc</span><span class="p">){</span>
+            <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">doc</span><span class="p">);</span>
+        <span class="p">})</span>
+    <span class="p">}</span>
+
+</code></pre></div></div>
+<p>上面的代码会报错，因为await用在普通函数中，但是。如果forEach方法的参数改为async函数，也会出问题</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kd">function</span> <span class="nx">dbFuc</span><span class="p">(</span><span class="nx">db</span><span class="p">){</span> <span class="c1">//这里不需要async</span>
+        <span class="kd">let</span> <span class="nx">docs</span> <span class="o">=</span> <span class="p">[{},{},{}];</span>
+
+        <span class="c1">//可能得到错误的结果</span>
+        <span class="nx">docs</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="k">async</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">doc</span><span class="p">){</span>
+            <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">doc</span><span class="p">);</span>
+        <span class="p">})</span>
+    <span class="p">}</span>
+
+</code></pre></div></div>
+<p>上面的代码可能不会正常工作，原因是这时的3个db.post操作将是并发执行，即同时执行，而不是继发执行。<strong>正确是采用for循环</strong></p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">async</span> <span class="kd">function</span> <span class="nx">dbFuc</span><span class="p">(</span><span class="nx">db</span><span class="p">){</span> 
+        <span class="kd">let</span> <span class="nx">docs</span> <span class="o">=</span> <span class="p">[{},{},{}];</span>
+
+        <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">doc</span> <span class="k">of</span> <span class="nx">docs</span><span class="p">){</span>
+            <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">doc</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>另外一种情况是希望多个请求并发执行，可以使用Promise.all方法。当3个请求都会resolved，下面两种写法效果相同。</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">async</span> <span class="kd">function</span> <span class="nx">dbFuc</span><span class="p">(</span><span class="nx">db</span><span class="p">){</span>
+        <span class="kd">let</span> <span class="nx">docs</span> <span class="o">=</span> <span class="p">[{},{},{}];</span>
+        <span class="kd">let</span> <span class="nx">promises</span> <span class="o">=</span> <span class="nx">docs</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">doc</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">db</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">doc</span><span class="p">));</span>
+
+        <span class="kd">let</span> <span class="nx">results</span> <span class="o">=</span> <span class="k">await</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="nx">promises</span><span class="p">);</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">results</span><span class="p">)</span>
+    <span class="p">}</span>
+
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">async</span> <span class="kd">function</span> <span class="nx">dbFuc</span><span class="p">(</span><span class="nx">db</span><span class="p">){</span>
+        <span class="kd">let</span> <span class="nx">docs</span> <span class="o">=</span> <span class="p">[{},{},{}];</span>
+        <span class="kd">let</span> <span class="nx">promises</span> <span class="o">=</span> <span class="nx">docs</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">doc</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">db</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">doc</span><span class="p">));</span>
+        
+        <span class="kd">let</span> <span class="nx">results</span> <span class="o">=</span> <span class="p">[];</span>
+        <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">promise</span> <span class="k">of</span> <span class="nx">promises</span><span class="p">){</span>
+            <span class="nx">results</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="k">await</span> <span class="nx">promise</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">results</span><span class="p">)</span>
+    <span class="p">}</span>
+
+</code></pre></div></div>
+
+
+    </div>
+
+</article>
+<div class="post-nav">
+<a class="previous" href="/es6/2021/10/25/promise.html" title="Promise 全面解析">Promise 全面解析</a><span></span>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/es6/2021/10/27/ES6.html" title="">async函数，了解一下</a></li>
+<li><a class="post-link" href="/note/2020/07/06/read-notes.html" title="">浏览器缓存机制</a></li>
+<li><a class="post-link" href="/es6/2020/06/19/read-notes.html" title="">事件流和事件委托</a></li>
+<li><a class="post-link" href="/es6/2021/10/25/promise.html" title="">Promise 全面解析</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 40px;">
+    <!-- Get sidebar items --></section>
+</div>
+ 
+      </div>
+    </main>
+
+
+    <!-- begin search -->
+<div class="search">
+  <div class="container">
+    <div class="row">
+      <div class="col col-12">
+        <div class="search__box">
+          <div class="search__group">
+            <div class="search__close">
+              <i class="ion ion-ios-close-circle-outline"></i>
+            </div>
+            <label for="js-search-input" class="screen-reader-text">Search for Blog</label>
+            <input type="text" id="js-search-input" class="search__text" autocomplete="off" placeholder="Type to search">
+          </div>
+          <ul id="js-results-container" class="search-results-list"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end search --><footer class="site-footer">
+
+  <div class="footer-wrapper">
+
+    <h2 class="footer-heading">Dandelion Blog</h2>
+
+    <ul class="social-footer">
+    
+      <li><a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+    
+    
+      <li><a href="https://facebook.com/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+    
+    
+      <li><a href="https://plus.google.com/" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+    
+    
+      <li><a href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+    
+    
+      <li><a href="https://pinterest.com/" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+    
+    
+      <li><a href="https://www.youtube.com/" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
+    
+    </ul>
+
+    <div class="copyright">
+      <p><a target="_blank" href="https://jekyllrb.com/">Proudly powered by Jekyll</a> | Theme: Dandelion Blog by <a target="_blank" href="http://jekyllthemes.org/themes/jekyll-theme-yat/">Yet Another Theme (YAT)</a></p>
+    </div>
+  </div>
+
+</footer> <!-- /.site-footer -->
+</body>
+</html>
