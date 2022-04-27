@@ -1,26 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
+<!-- 简历模板 --><html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PS作品集</title>
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_2889232_a2ssraz963q.css">
+  <link rel="stylesheet" href="../assets/css/about.css">
+  <style>
+    body{
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+    }
+    #particles-js{
+      width: 100%;
+      /* height: calc(100% - 100px); */
+      height: 100%;
+      position: fixed; 
+      /* z-index: -1; */
+    }
+    .hero{
+        background: rgb(200, 207, 219) !important;
+    }
+
+    .main-outter{
+        background: #fff !important;
+    }
+    
+    .main-container {
+        width: 1200px;
+        margin: 0 auto;
+        background-color: white;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        /* background-color: rgb(231,227,226); */
+    }
+    /* rgb(231,227,226) */
+    .img_box {
+        width: 45%;
+        background-color: rgb(200, 207, 219);
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    .img_box1{
+        width: 100%;
+        background-color: rgb(200, 207, 219);
+        padding: 20px;
+    }
+  </style>
+</head>
+<head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>Dandelion Blog | Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</title>
+<title>PS | Dandelion Blog</title>
 <meta name="generator" content="Jekyll v4.2.0">
-<meta property="og:title" content="Dandelion Blog">
+<meta property="og:title" content="PS">
 <meta name="author" content="dandelion9508">
 <meta property="og:locale" content="en_US">
 <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.">
 <meta property="og:description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.">
-<link rel="canonical" href="/404.html">
-<meta property="og:url" content="/404.html">
+<link rel="canonical" href="/ps.html">
+<meta property="og:url" content="/ps.html">
 <meta property="og:site_name" content="Dandelion Blog">
 <meta name="twitter:card" content="summary">
-<meta property="twitter:title" content="Dandelion Blog">
+<meta property="twitter:title" content="PS">
 <script type="application/ld+json">
-{"url":"/404.html","headline":"Dandelion Blog","author":{"@type":"Person","name":"dandelion9508"},"@type":"WebPage","description":"Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.","@context":"https://schema.org"}</script>
+{"url":"/ps.html","headline":"PS","author":{"@type":"Person","name":"dandelion9508"},"@type":"WebPage","description":"Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="shortcut icon" href="/assets/images/girl.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -304,348 +354,50 @@ document.addEventListener('DOMContentLoaded', function(event) {
     storeScrollData();
   })();
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script>
-  function hashLocate(hashValue) {
-    hashValue = hashValue.replace(/^.*#h-/, '');
-    hashValue = decodeURIComponent(hashValue);
-    var element = document.getElementById(hashValue);
-
-    if (!element) {
-      return;
-    }
-
-    var header = document.querySelector('header.site-header');
-    var headerRect = header.getBoundingClientRect();
-    var headerTop = Math.floor(headerRect.top);
-    var headerHeight = Math.floor(headerRect.height);
-    var scrollPos = getScrollPos();
-    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
-
-    if (offsetY == scrollPos.y) {
-      return;
-    }
-
-    if (headerTop == 0  && offsetY > scrollPos.y) {
-      offsetY += headerHeight + 2;
-    } else if (headerTop < 0  && offsetY < scrollPos.y) {
-      offsetY -= headerHeight - 2;
-    }
-
-    smoothScrollTo(offsetY);
-  }
-
-  // The first event occurred
-  window.addEventListener('load', function(event) {
-    if (window.location.hash) {
-      hashLocate(window.location.hash);
-    }
-  });
-
-  // The first event occurred
-  window.addEventListener('click', function(event) {
-    if (event.target.tagName.toLowerCase() == 'a') {
-      hashLocate(event.target.getAttribute('href'));
-    }
-  });
-</script>
-<div class="theme-toggle">
-  <input type="checkbox" id="theme-switch">
-  <label for="theme-switch">
-    <div class="toggle"></div>
-    <div class="names">
-      <p class="light">Light</p>
-      <p class="dark">Dark</p>
-    </div>
-  </label>
-</div>
-
-
-
-
-<script>
-  (function() {
-    var sw = document.getElementById('theme-switch');
-    var html = document.getElementsByTagName('html')[0];
-    var nightModeOption = ('auto' || 'auto').toLowerCase();
-    var storage = nightModeOption === 'manual'
-        ? localStorage
-        : sessionStorage;
-    var themeData = loadThemeData();
-
-    function saveThemeData(data) {
-      storage.setItem('theme', JSON.stringify(data));
-    }
-
-    function loadThemeData() {
-      var data = storage.getItem('theme');
-      try {
-        data = JSON.parse(data ? data : '');
-      } catch(e) {
-        data = { nightShift: undefined, autoToggleAt: 0 };
-        saveThemeData(data);
-      }
-      return data;
-    }
-
-    function handleThemeToggle(nightShift) {
-      themeData.nightShift = nightShift;
-      saveThemeData(themeData);
-      html.dataset.theme = nightShift ? 'dark' : 'light';
-      setTimeout(function() {
-        sw.checked = nightShift ? true : false;
-      }, 50);
-    }
-
-    function autoThemeToggle() {
-      // Next time point of theme toggle
-      var now = new Date();
-      var toggleAt = new Date();
-      var hours = now.getHours();
-      var nightShift = hours >= 19 || hours <=7;
-
-      if (nightShift) {
-        if (hours > 7) {
-          toggleAt.setDate(toggleAt.getDate() + 1);
-        }
-        toggleAt.setHours(7);
-      } else {
-        toggleAt.setHours(19);
-      }
-
-      toggleAt.setMinutes(0);
-      toggleAt.setSeconds(0);
-      toggleAt.setMilliseconds(0)
-
-      var delay = toggleAt.getTime() - now.getTime();
-
-      // auto toggle theme mode
-      setTimeout(function() {
-        handleThemeToggle(!nightShift);
-      }, delay);
-
-      return {
-        nightShift: nightShift,
-        toggleAt: toggleAt.getTime()
-      };
-    }
-
-    // Listen the theme toggle event
-    sw.addEventListener('change', function(event) {
-      handleThemeToggle(event.target.checked);
-    });
-
-    if (nightModeOption == 'auto') {
-      var data = autoThemeToggle();
-
-      // Toggle theme by local setting
-      if (data.toggleAt > themeData.autoToggleAt) {
-        themeData.autoToggleAt = data.toggleAt;
-        handleThemeToggle(data.nightShift);
-      } else {
-        handleThemeToggle(themeData.nightShift);
-      }
-    } else if (nightModeOption == 'manual') {
-      handleThemeToggle(themeData.nightShift);
-    } else {
-      var nightShift = themeData.nightShift;
-      if (nightShift === undefined) {
-        nightShift = nightModeOption === 'on';
-      }
-      handleThemeToggle(nightShift);
-    }
-  })();
-</script>
-<main class="page-content" aria-label="Content">
-      <div class="wrapper">
-        <style type="text/css" media="screen">
-  .container {
-    margin: 10px auto;
-    max-width: 600px;
-    text-align: center;
-  }
-  h1 {
-    margin: 30px 0;
-    font-size: 4em;
-    line-height: 1;
-    letter-spacing: -1px;
-  }
-</style>
-
-<div class="container">
-  <h1>404</h1>
-
-  <p><strong>Page not found :(</strong></p>
-  <p>Try to check other pages through the menu. </p>
-</div>
-
-      </div>
-    </main>
-
-
-    <!-- begin search -->
-<div class="search">
-  <div class="container">
-    <div class="row">
-      <div class="col col-12">
-        <div class="search__box">
-          <div class="search__group">
-            <div class="search__close">
-              <i class="ion ion-ios-close-circle-outline"></i>
-            </div>
-            <label for="js-search-input" class="screen-reader-text">Search for Blog</label>
-            <input type="text" id="js-search-input" class="search__text" autocomplete="off" placeholder="Type to search">
+<!-- 动态粒子 -->
+  <div id="particles-js"></div>
+
+  <div class="hero">
+    <div class="container"> 
+      <div class="row">
+        <div class="col col-6 col-t-12 last-item">
+          <div class="hero__content">
+            <h1 class="hero__title">photoshop作品集</h1>
+            <p class="hero__subtitle">业余自己学习photopshop,展示设计的菜单</p>
           </div>
-          <ul id="js-results-container" class="search-results-list"></ul>
+        </div>
+        <div class="col col-5 col-t-12">
+          <div class="hero__image">
+              <!-- <img src="/assets/images/yao10.jpg" alt=""> -->
+            <img src="/assets/images/ps/ps.png" alt="">
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-<!-- end search --><footer class="site-footer">
+
+ 
+  <div class="main-outter">
+    <div class="main-container">
+        <div class="img_box">
+            <img src="/assets/images/ps/ps1.png" alt="">
+        </div>
+        <div class="img_box">
+            <img src="/assets/images/ps/ps3.jpg" alt="">
+        </div>
+        
+        <div class="img_box">
+            <img src="/assets/images/ps/ps2.png" alt="">
+        </div>
+        <div class="img_box">
+            <img src="/assets/images/ps/ps4.jpg" alt="">
+        </div>
+        <div class="img_box1">
+            <img src="/assets/images/ps/ps5.jpg" alt="">
+        </div>
+    </div>
+  </div>
+<footer class="site-footer">
 
   <div class="footer-wrapper">
 
@@ -678,5 +430,11 @@ document.addEventListener('DOMContentLoaded', function(event) {
   </div>
 
 </footer> <!-- /.site-footer -->
+<script src="../assets/js/particles.js"></script>
+  <script src="../assets/js/app.js"></script>
+
 </body>
+
+
+
 </html>

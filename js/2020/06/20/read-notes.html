@@ -7,21 +7,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>博文 | Dandelion Blog</title>
+<title>垃圾回收机制 | Dandelion Blog</title>
 <meta name="generator" content="Jekyll v4.2.0">
-<meta property="og:title" content="博文">
+<meta property="og:title" content="垃圾回收机制">
 <meta name="author" content="dandelion9508">
 <meta property="og:locale" content="en_US">
-<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.">
-<meta property="og:description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.">
-<link rel="canonical" href="/">
-<meta property="og:url" content="/">
+<meta name="description" content="我们先来了解一下说明时垃圾回收机制以及它的原理。垃圾回收机制的原理： 找出那些不再继续使用的变量，然后释放其占用的内存">
+<meta property="og:description" content="我们先来了解一下说明时垃圾回收机制以及它的原理。垃圾回收机制的原理： 找出那些不再继续使用的变量，然后释放其占用的内存">
+<link rel="canonical" href="/js/2020/06/20/read-notes.html">
+<meta property="og:url" content="/js/2020/06/20/read-notes.html">
 <meta property="og:site_name" content="Dandelion Blog">
-<link rel="next" href="/page/2/">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2020-06-20T00:00:00+08:00">
 <meta name="twitter:card" content="summary">
-<meta property="twitter:title" content="博文">
+<meta property="twitter:title" content="垃圾回收机制">
 <script type="application/ld+json">
-{"url":"/","headline":"博文","author":{"@type":"Person","name":"dandelion9508"},"@type":"WebSite","description":"Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.","name":"Dandelion Blog","@context":"https://schema.org"}</script>
+{"url":"/js/2020/06/20/read-notes.html","headline":"垃圾回收机制","dateModified":"2020-06-20T00:00:00+08:00","datePublished":"2020-06-20T00:00:00+08:00","author":{"@type":"Person","name":"dandelion9508"},"mainEntityOfPage":{"@type":"WebPage","@id":"/js/2020/06/20/read-notes.html"},"@type":"BlogPosting","description":"我们先来了解一下说明时垃圾回收机制以及它的原理。垃圾回收机制的原理： 找出那些不再继续使用的变量，然后释放其占用的内存","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="shortcut icon" href="/assets/images/girl.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -451,18 +452,56 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 <section class="page-banner">
     <div class="page-banner-img">
-<div style="background-image: url(/assets/images/banners/skyle.jpg)"></div>
-        <img class="img-placeholder" src="/assets/images/banners/skyle.jpg">
+<div style="background-image: url(/assets/images/banners/fish.jpg)"></div>
+        <img class="img-placeholder" src="/assets/images/banners/fish.jpg">
 </div>
     <div class="wrapper">
-      <div class="page-banner-inner"><div class="page-banner-default">
-            <h1 class="page-banner-heading">
-              Dandelion Blog
-            </h1>
-            <h2 class="page-banner-subheading">
-              你我皆凡人，却又闪着光
-            </h2>
-          </div></div>
+      <div class="page-banner-inner">
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">垃圾回收机制</h1>
+  <h2 class="post-subtitle"></h2>
+
+  <p class="post-meta">
+    <time class="dt-published" datetime="2020-06-20T00:00:00+08:00" itemprop="datePublished"><i class="fa fa-calendar"></i> 2020-06-20
+    </time>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span> -->
+  </p></header>
+</div>
     </div>
   </section><script>
   function hashLocate(hashValue) {
@@ -620,595 +659,91 @@ document.addEventListener('DOMContentLoaded', function(event) {
         <div class="framework">
   <section class="main">
 
-     <div class="articles">
-  
+     <div class="post">
+  <section>
 
-  
 
 
-  <div class="pagination">
-  <!-- Post list links -->
-  <ul class="post-list">
-<li>
-      
 
 
 
 
 
 
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
+    <div class="post-content e-content" itemprop="articleBody">
 
+      <h2 id="垃圾回收机制">垃圾回收机制</h2>
 
+<h3 id="垃圾回收机制闭包为什么不会被回收呢">垃圾回收机制，闭包为什么不会被回收呢？</h3>
+<p>我们先来了解一下说明时垃圾回收机制以及它的原理。
+JavaScript具有自动垃圾收集机制，执行环境会负责管理代码执行过程中使用的内存。</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>垃圾回收机制的原理： 找出那些不再继续使用的变量，然后释放其占用的内存。
+</code></pre></div></div>
 
+<h3 id="变量生命周期">变量生命周期</h3>
+<ol>
+  <li>全局变量指的是定义在所有函数之外的变量。</li>
+  <li>局部变量所指的是在某个函数中定义的变量。</li>
+</ol>
 
+<p>局部变量只在函数的执行过程中存在，而这个过程中会为局部变量在栈或堆上分配相应的空间，以存储它们的值，然后在函数中使用这些变量，直到函数结束，一旦函数结束，局部变量就没有存在必要了，可以释放它们占用的内存。</p>
 
+<p>垃圾回收器必须知道哪个变量有用，哪个变量没用。</p>
 
+<h4 id="标记清除">标记清除</h4>
+<p>JavaScript中最常用的垃圾收集方式是<strong>标记清除</strong>。
+当变量进入执行环境的时候，比如函数中声明一个变量，垃圾回收器将其标记为“进入环境”，当变量离开环境的时候（函数执行结束）将其标记为“离开环境”。原则上讲不能够释放进入环境的变量所占的内存，它们随时可能会被调用得到。
+垃圾回收器会在运行的时候会给存储在内存中的所有变量加上标记，然后去掉环境中的变量所引用的变量（闭包）。在这些完成之后仍存在标记的是要删除的变量了，因为环境中的变量已经无法访问到这些变量了，然后垃圾回收器销毁这些标记的变量并回收所占的内存空间。</p>
 
+<h4 id="引用计数">引用计数</h4>
+<p>引用计数的策略是跟踪记录每个值被使用的次数。
+当声明一个变量并将一个引用类型值赋给该变量时，则这个值的引用次数时1。如果同一个值又被赋值给另一个变量，则该值的引用次数加1。相反，如果包含对这个值引用的变量又取另一个值，则这个值得引用次数减1。
+当这个值得引用次数变成0时，则说明没有办法再访问这个值了，因而就可以将其占用得内存空间回收回来。这样，当垃圾收集器下次再运行时，它就会释放那些引用次数为零的值所占用的内存。
+缺点： 没办法解决循环引用问题。</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kd">function</span> <span class="nx">test</span><span class="p">(){</span>
+        <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">{};</span>
+        <span class="nx">a</span><span class="p">.</span><span class="nx">prop</span> <span class="o">=</span> <span class="nx">b</span><span class="p">;</span>
+        <span class="nx">b</span><span class="p">.</span><span class="nx">prop</span> <span class="o">=</span> <span class="nx">a</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+<p>为了避免类似这样的循环引用问题，最好时在不使用它们的时候手工断开原生Javascript对象与DOM元素之间的连接。
+例如 :</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nx">a</span><span class="p">.</span><span class="nx">prop</span> <span class="o">=</span> <span class="kc">null</span>
+    <span class="nx">b</span><span class="p">.</span><span class="nx">prop</span> <span class="o">=</span> <span class="kc">null</span>
+</code></pre></div></div>
 
+<h3 id="什么时候会触发垃圾回收">什么时候会触发垃圾回收</h3>
+<p>如果垃圾收集例程回收的内存分配量低于15%，则变量、字面量和（或）数组元素的临界值就会加倍。
+如果例程回收了85%的内存分配量，则将各种临界值重置回默认值。</p>
 
+<h3 id="闭包为什么不会被回收呢">闭包为什么不会被回收呢</h3>
+<p>因为他本身就是建立在一个函数的内部作用域的子函数,由于可访问上级作用域的原因,即使上级函数执行完,作用域也不会被清除,这时子函数,就是闭包,就拥有了访问上级作用域中变量的权限,即使上级函数执行完,作用域内的值也不会被销毁。</p>
 
 
+    </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h2 class="post-title">
-        <a class="post-link" href="/js/2022/04/23/jdms.html">
-          说说js实现数组去重
-        </a>
-      </h2>
-      <div class="post-meta">
-        <span class="post-date"><i class="fa fa-calendar"></i> 2022-04-23</span>
-        <!-- <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 6 mins</span> -->
-      </div>
-      <a class="post-excerpt" href="/js/2022/04/23/jdms.html">
-        <p>
-        这道被问的频率颇高，重点列出来。具体有八种不同的方法实现。  <span>...</span>
-        <!-- class="read_more" -->
-        </p>
-      </a>
-      <div class="post-tags"></div>
-    </li>
-<li>
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h2 class="post-title">
-        <a class="post-link" href="/css/2022/04/22/jdms.html">
-          前端实现三栏布局
-        </a>
-      </h2>
-      <div class="post-meta">
-        <span class="post-date"><i class="fa fa-calendar"></i> 2022-04-22</span>
-        <!-- <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 4 mins</span> -->
-      </div>
-      <a class="post-excerpt" href="/css/2022/04/22/jdms.html">
-        <p>
-        这道被问的频率颇高，重点列出来。具体有八种不同的方法实现。  <span>...</span>
-        <!-- class="read_more" -->
-        </p>
-      </a>
-      <div class="post-tags"></div>
-    </li>
-<li>
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h2 class="post-title">
-        <a class="post-link" href="/js/2021/10/27/ES6.html">
-          async函数，了解一下
-        </a>
-      </h2>
-      <div class="post-meta">
-        <span class="post-date"><i class="fa fa-calendar"></i> 2021-10-27</span>
-        <!-- <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 5 mins</span> -->
-      </div>
-      <a class="post-excerpt" href="/js/2021/10/27/ES6.html">
-        <p>
-        async 函数返回一个Promise对象，可以使用then方法添加回调函数。当函数执行的时候，一旦遇到await就会先返回，等到异步操作完成，再接着执行函数体内后面的语句  <span>...</span>
-        <!-- class="read_more" -->
-        </p>
-      </a>
-      <div class="post-tags"></div>
-    </li>
-<li>
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h2 class="post-title">
-        <a class="post-link" href="/js/2021/10/25/promise.html">
-          Promise 全面解析
-        </a>
-      </h2>
-      <div class="post-meta">
-        <span class="post-date"><i class="fa fa-calendar"></i> 2021-10-25</span>
-        <!-- <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 8 mins</span> -->
-      </div>
-      <a class="post-excerpt" href="/js/2021/10/25/promise.html">
-        <p>
-        Promise 对象用于表示一个异步操作的最终完成 (或失败)及其结果值。  <span>...</span>
-        <!-- class="read_more" -->
-        </p>
-      </a>
-      <div class="post-tags"></div>
-    </li>
-<li>
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h2 class="post-title">
-        <a class="post-link" href="/js/2021/10/16/vue.html">
-          nextTick
-        </a>
-      </h2>
-      <div class="post-meta">
-        <span class="post-date"><i class="fa fa-calendar"></i> 2021-10-16</span>
-        <!-- <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span> -->
-      </div>
-      <a class="post-excerpt" href="/js/2021/10/16/vue.html">
-        <p>
-        Vue是监测到数据发生变化，就立马更新的吗？  <span>...</span>
-        <!-- class="read_more" -->
-        </p>
-      </a>
-      <div class="post-tags"></div>
-    </li>
-</ul>
-
-  <!-- Pagination links -->
-
-
-  <div class="paginator">
-    <span class="previous">
-    
-      <!-- <span>Prev</span> -->
-      <span>上一页</span>
-    
-    </span>
-
-    <span class="indicator"> 第 1 页  /  总 3 页</span>
-
-    <span class="next">
-    
-      <!-- <a href="/page/2/">Next</a> -->
-      <a href="/page/2/">下一页</a>
-    
-    </span>
-  </div>
-
+</article>
+<div class="post-nav">
+<a class="previous" href="/%E9%97%AE%E9%A2%98/2020/06/20/problem-array.html" title="根据对象数组属性将数组对象分割成多个数组">根据对象数组属性将数组对象分割成多个数组</a><a class="next" href="/note/2020/07/06/read-notes.html" title="浏览器缓存机制">浏览器缓存机制</a>
 </div>
-
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/note/2020/07/06/read-notes.html" title="浏览器缓存机制">浏览器缓存机制</a></li>
+<li><a class="post-link" href="/note/2021/09/10/http.html" title="浏览器缓存机制">重拾网络知识之HTTP和HTTPS</a></li>
+<li><a class="post-link" href="/js/2021/10/25/promise.html" title="浏览器缓存机制">Promise 全面解析</a></li>
+<li><a class="post-link" href="/js/2021/04/05/ES6.html" title="浏览器缓存机制">let和const命令</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
 </div>
 
 
   </section>
   <section class="sidebar" style="margin-left: 40px;">
-    <!-- Get sidebar items -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link rel="stylesheet" href="../../assets/css/demo.css">
-
-
-<div id="Tz_box">
-	<!--Tz_List start-->
-	<ul id="Tz_List">
-		<li>
-<img src="../../assets/images/0.png" alt="数字图片0"><img src="../../assets/images/0.png">
-</li>
-		<li>
-<img src="../../assets/images/0.png" alt="数字图片0"><img src="../../assets/images/0.png">
-</li>
-		<li><img src="../../assets/images/d.png" alt="数字图片冒号"></li>
-		<li>
-<img src="../../assets/images/0.png"><img src="../../assets/images/0.png">
-</li>
-		<li>
-<img src="../../assets/images/0.png"><img src="../../assets/images/0.png">
-</li>
-		<li><img src="../../assets/images/d.png"></li>
-		<li>
-<img src="../../assets/images/0.png"><img src="../../assets/images/0.png">
-</li>
-		<li>
-<img src="../../assets/images/0.png"><img src="../../assets/images/0.png">
-</li>
-	</ul>
-	<!--Tz_List end-->
-</div>
-
-<script src="../../assets/js/clockMove.js"></script>
-<script src="../../assets/js/clock.js"></script>
-
-
-<div class="common-list">
-  <h1>文章分类</h1>
-  <ul>
-    <li>
-      <a href="/index.html">
-        全部<span>14</span>
-      </a>
-    </li>
-
-    
-      
-        
-      
-        
-      
-        
-      
-        
-          <li>
-            <a href="/categories.html#h-css">
-              Css <span>1</span>
-            </a>
-          </li>
-        
-      
-        
-      
-    
-      
-        
-      
-        
-      
-        
-          <li>
-            <a href="/categories.html#h-js">
-              javaScript <span>8</span>
-            </a>
-          </li>
-        
-      
-        
-      
-        
-      
-    
-      
-        
-          <li>
-            <a href="/categories.html#h-note">
-              网络与浏览器 <span>2</span>
-            </a>
-          </li>
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-          <li>
-            <a href="/categories.html#h-%E9%97%AE%E9%A2%98">
-              应用 <span>3</span>
-            </a>
-          </li>
-        
-      
-    
-  </ul>
-</div>
-
-<!-- 关于我 -->
-<div class="about-me">
-    <h1>关于我</h1>
-    <img src="../../assets/images/girl.jpg" alt="头像">
-    
-    <div>愿化为一叶扁舟</div>
-    <div style="float: right;">  遨游在知识海洋里</div>
-   
-</div>
-</section>
+    <!-- Get sidebar items --></section>
 </div>
  
       </div>
